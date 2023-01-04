@@ -67,6 +67,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Error Log
 
-1. InvalidArgumentException: Unable to locate a class or view for component [admin-layout] (unfixed)
+1. InvalidArgumentException: Unable to locate a class or view for component [admin-layout] (fixed)
 
 
