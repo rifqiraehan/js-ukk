@@ -1,4 +1,3 @@
-![canteen-co](https://user-images.githubusercontent.com/70558125/210673695-22584049-6834-4910-a32f-7f01f27ba117.svg)
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://user-images.githubusercontent.com/70558125/210673862-7935d305-546e-4b68-af54-a8b007ff4c87.svg") width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -71,7 +70,3 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 1. InvalidArgumentException: Unable to locate a class or view for component [admin-layout] (fixed)
 
 ##
-
-
-
-![canteen-co-white](https://user-images.githubusercontent.com/70558125/210673862-7935d305-546e-4b68-af54-a8b007ff4c87.svg)
