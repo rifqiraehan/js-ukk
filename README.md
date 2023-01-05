@@ -69,4 +69,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 1. InvalidArgumentException: Unable to locate a class or view for component [admin-layout] (fixed)
 
+![CanteenCo-white](https://user-images.githubusercontent.com/70558125/210673583-e7d9df9b-9df5-477c-9b59-7b19fb34a229.png)
+
 
