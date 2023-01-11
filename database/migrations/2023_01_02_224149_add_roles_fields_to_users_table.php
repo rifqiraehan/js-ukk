@@ -15,10 +15,10 @@ class AddRolesFieldsToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->foreignId('role_id')->constrained();
-            $table->enum('kelas',['X','XI','XII','XIII'])->default('X')->nullable();
+            $table->enum('kelas',['X','XI','XII','XIII'])->nullable();
             $table->string('jurusan')->nullable();
 
-            $table->enum('lokasi',['Lokasi A','Lokasi B'])->default('Lokasi A')->nullable();
+            $table->enum('lokasi',['Lokasi A','Lokasi B'])->nullable();
         });
     }
 

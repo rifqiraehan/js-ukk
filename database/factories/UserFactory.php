@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
 
+
 class UserFactory extends Factory
 {
     /**
@@ -28,7 +29,8 @@ class UserFactory extends Factory
             'name' => $this->faker->name(),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'username' => $this->faker->unique()->userName(),
+            'password' => bcrypt('secret'), // password
             'remember_token' => Str::random(10),
         ];
     }
@@ -65,5 +67,40 @@ class UserFactory extends Factory
                 }),
             'ownedTeams'
         );
+    }
+
+    public function penjual()
+    {
+        return $this->state(function (array $attributes) {
+            $lokasiKantin = ['Lokasi A', 'Lokasi B'];
+
+            return[
+                'role_id'=> '2',
+                'lokasi' => $lokasiKantin[mt_rand(0,count($lokasiKantin)-1)],
+            ];
+        });
+    }
+
+    public function kurir()
+    {
+        return $this->state(function (array $attributes) {
+            return[
+                'role_id'=> '3',
+            ];
+        });
+    }
+
+    public function murid()
+    {
+        return $this->state(function (array $attributes) {
+            $kelas = ['X', 'XI', 'XII', 'XIII'];
+            $jurusan = ['ANI', 'RPL 1', 'RPL 2', 'SIJA', 'TKJ', 'DPIB', 'TITL'];
+
+            return[
+                'role_id'=> '4',
+                'kelas' => $kelas[mt_rand(0,count($kelas)-1)],
+                'jurusan' => $jurusan[mt_rand(0,count($jurusan)-1)],
+            ];
+        });
     }
 }
