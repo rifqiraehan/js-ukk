@@ -93,15 +93,6 @@
         @if (Auth::user()->role_id == 4)
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="kelas" value="{{ __('Kelas') }}" />
-                <x-jet-input id="kelas" type="text" class="mt-1 block w-full" wire:model.defer="state.kelas" autocomplete="kelas" />
-                <x-jet-input-error for="kelas" class="mt-2" />
-            </div>
-        @endif
-
-        <!-- Kelas -->
-        {{-- @if (Auth::user()->role_id == 4)
-            <div class="col-span-6 sm:col-span-4">
-                <x-jet-label for="kelas" value="{{ __('Kelas') }}" />
                 <select id="kelas" class="mt-1 block w-full" wire:model="state.kelas" autocomplete="kelas">
                     <option value="X">10</option>
                     <option value="XI">11</option>
@@ -110,7 +101,7 @@
                 </select>
                 <x-jet-input-error for="kelas" class="mt-2" />
             </div>
-       @endif --}}
+       @endif
 
         <!-- Jurusan -->
         @if (Auth::user()->role_id == 4)
@@ -125,7 +116,10 @@
         @if (Auth::user()->role_id == 2)
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="lokasi" value="{{ __('Lokasi Kantin') }}" />
-                <x-jet-input id="lokasi" type="text" class="mt-1 block w-full" wire:model.defer="state.lokasi" autocomplete="lokasi" />
+                <select id="lokasi" class="mt-1 block w-full" wire:model="state.lokasi" autocomplete="lokasi">
+                    <option value="Lokasi A">Lokasi A</option>
+                    <option value="Lokasi B">Lokasi B</option>
+                </select>
                 <x-jet-input-error for="lokasi" class="mt-2" />
             </div>
         @endif
