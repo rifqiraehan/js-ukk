@@ -7,5 +7,6 @@ Repository for UKK. This is about system information of school canteen.
 ## Error Log
 
 1. InvalidArgumentException: Unable to locate a class or view for component [admin-layout] (FIXED)
+2. Belum bisa melakukan update UpdateUserProfileInformation
 
 ##
