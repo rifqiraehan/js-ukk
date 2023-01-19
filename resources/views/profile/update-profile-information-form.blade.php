@@ -1,10 +1,10 @@
 <x-jet-form-section submit="updateProfileInformation">
     <x-slot name="title">
-        {{ __('Profile Information') }}
+        {{ __('Informasi Profile') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('Update your account\'s profile information and email address.') }}
+        {{ __('Perbarui informasi profil dan alamat email akun Anda.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -54,7 +54,7 @@
 
         <!-- Name -->
         <div class="col-span-6 sm:col-span-4">
-            <x-jet-label for="name" value="{{ __('Name') }}" />
+            <x-jet-label for="name" value="{{ __('Nama') }}" />
             <x-jet-input id="name" type="text" class="mt-1 block w-full" wire:model.defer="state.name" autocomplete="name" />
             <x-jet-input-error for="name" class="mt-2" />
         </div>
@@ -81,6 +81,61 @@
                 @endif
             @endif
         </div>
+
+        <!-- Username -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="username" value="{{ __('Username') }}" />
+            <x-jet-input id="username" type="text" class="mt-1 block w-full" wire:model.defer="state.username" autocomplete="username" />
+            <x-jet-input-error for="username" class="mt-2" />
+        </div>
+
+        <!-- Kelas -->
+        @if (Auth::user()->role_id == 4)
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label for="kelas" value="{{ __('Kelas') }}" />
+                <x-jet-input id="kelas" type="text" class="mt-1 block w-full" wire:model.defer="state.kelas" autocomplete="kelas" />
+                <x-jet-input-error for="kelas" class="mt-2" />
+            </div>
+        @endif
+
+        <!-- Kelas -->
+        {{-- @if (Auth::user()->role_id == 4)
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label for="kelas" value="{{ __('Kelas') }}" />
+                <select id="kelas" class="mt-1 block w-full" wire:model="state.kelas" autocomplete="kelas">
+                    <option value="X">10</option>
+                    <option value="XI">11</option>
+                    <option value="XII">12</option>
+                    <option value="XIII">13</option>
+                </select>
+                <x-jet-input-error for="kelas" class="mt-2" />
+            </div>
+       @endif --}}
+
+        <!-- Jurusan -->
+        @if (Auth::user()->role_id == 4)
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label for="jurusan" value="{{ __('Jurusan') }}" />
+                <x-jet-input id="jurusan" type="text" class="mt-1 block w-full" wire:model.defer="state.jurusan" autocomplete="jurusan" />
+                <x-jet-input-error for="jurusan" class="mt-2" />
+            </div>
+        @endif
+
+        <!-- Lokasi -->
+        @if (Auth::user()->role_id == 2)
+            <div class="col-span-6 sm:col-span-4">
+                <x-jet-label for="lokasi" value="{{ __('Lokasi Kantin') }}" />
+                <x-jet-input id="lokasi" type="text" class="mt-1 block w-full" wire:model.defer="state.lokasi" autocomplete="lokasi" />
+                <x-jet-input-error for="lokasi" class="mt-2" />
+            </div>
+        @endif
+
+
+
+
+
+
+
     </x-slot>
 
     <x-slot name="actions">

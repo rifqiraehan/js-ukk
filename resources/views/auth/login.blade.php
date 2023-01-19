@@ -16,8 +16,8 @@
             @csrf
 
             <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-jet-label for="login" value="{{ __('Email atau Username') }}" />
+                <x-jet-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autofocus />
             </div>
 
             <div class="mt-4">
@@ -28,19 +28,19 @@
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
                     <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                    <span class="ml-2 text-sm text-gray-600">{{ __('Ingat Saya') }}</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-center mt-4">
                 @if (Route::has('password.request'))
                     <a class="text-sm text-gray-600 hover:text-gray-900 underline" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
+                        {{ __('Lupa Kata Sandi?') }}
                     </a>
                 @endif
 
                 <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
+                    {{ __('Masuk') }}
                 </x-jet-button>
             </div>
 
@@ -49,14 +49,14 @@
                     <div class="w-full border-b border-gray-300"></div>
                 </div>
                 <div class="relative flex justify-center">
-                    <span class="bg-white px-4 text-sm text-gray-500">Or</span>
+                    <span class="bg-white px-4 text-sm text-gray-500">Atau</span>
                 </div>
             </div>
 
             <div class="flex items-center justify-center">
                 @if (Route::has('register'))
-                    <p><span class="text-sm text-gray-600">didn't have an account?</span>
-                    <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 hover:text-gray-900 underline">Register</a></p>
+                    <p><span class="text-sm text-gray-600">Belum punya akun <strong>Canteen Co.</strong>?</span>
+                    <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 hover:text-gray-900 underline">Daftar</a></p>
                 @endif
             </div>
         </form>

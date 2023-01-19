@@ -19,10 +19,10 @@ class UserSeeder extends Seeder
             'role_id' => '1',
         ]);
 
-        User::factory(3)->penjual()->create();
+        User::factory(5)->penjual()->create();
 
-        User::factory(3)->kurir()->create();
+        User::factory(5)->kurir()->create();
 
-        User::factory(3)->murid()->create();
+        User::factory(5)->murid()->create();
     }
 }
