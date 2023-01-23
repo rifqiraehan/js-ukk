@@ -30,13 +30,13 @@
 
                     @if (auth()->user()->role_id == 3)
                         <x-jet-nav-link href="{{ route('kurir.home.index') }}" :active="request()->routeIs('kurir.home.index')">
-                            {{ __('Home') }}
+                            {{ __('Request') }}
                         </x-jet-nav-link>
                     @endif
 
                     @if (auth()->user()->role_id == 4)
                         <x-jet-nav-link href="{{ route('murid.home.index') }}" :active="request()->routeIs('murid.home.index')">
-                            {{ __('Home') }}
+                            {{ __('Products') }}
                         </x-jet-nav-link>
                     @endif
                 </div>
@@ -164,6 +164,29 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            @can('manage-users')
+                <x-jet-responsive-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
+                    {{ __('Users') }}
+                </x-jet-responsive-nav-link>
+            @endif
+
+            @can('manage-products')
+                <x-jet-responsive-nav-link href="{{ route('penjual.product.index') }}" :active="request()->routeIs('penjual.product.index')">
+                    {{ __('Products') }}
+                </x-jet-responsive-nav-link>
+            @endif
+
+            @if (auth()->user()->role_id == 3)
+                <x-jet-responsive-nav-link href="{{ route('kurir.home.index') }}" :active="request()->routeIs('kurir.home.index')">
+                    {{ __('Request') }}
+                </x-jet-responsive-nav-link>
+            @endif
+
+            @if (auth()->user()->role_id == 4)
+                <x-jet-responsive-nav-link href="{{ route('murid.home.index') }}" :active="request()->routeIs('murid.home.index')">
+                    {{ __('Products') }}
+                </x-jet-responsive-nav-link>
+            @endif
         </div>
 
         <!-- Responsive Settings Options -->

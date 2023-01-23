@@ -55,7 +55,7 @@
 
             <div class="flex items-center justify-center">
                 @if (Route::has('register'))
-                    <p><span class="text-sm text-gray-600">Belum punya akun <strong>Canteen Co.</strong>?</span>
+                    <p><span class="text-sm text-gray-600">Belum punya akun <strong>Laravel</strong>?</span>
                     <a href="{{ route('register') }}" class="text-sm text-gray-700 dark:text-gray-500 hover:text-gray-900 underline">Daftar</a></p>
                 @endif
             </div>

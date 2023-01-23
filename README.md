@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://user-images.githubusercontent.com/70558125/210673862-7935d305-546e-4b68-af54-a8b007ff4c87.svg") width="400" alt="Canteen Co. Logo"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://user-images.githubusercontent.com/70558125/210673862-7935d305-546e-4b68-af54-a8b007ff4c87.svg") width="400" alt="Laravel Logo"></a></p>
 
 ## About The Project
 

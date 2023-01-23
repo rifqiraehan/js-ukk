@@ -104,7 +104,7 @@
 
             <div class="flex items-center justify-center">
                 @if (Route::has('login'))
-                    <p><span class="text-sm text-gray-600">Sudah punya akun <strong>Canteen Co.</strong>?</span>
+                    <p><span class="text-sm text-gray-600">Sudah punya akun <strong>Laravel</strong>?</span>
                     <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 hover:text-gray-900 underline">Masuk</a></p>
                 @endif
             </div>

@@ -49,6 +49,17 @@ class UserSeeder extends Seeder
             'role_id' => '4',
         ]);
 
+        User::create([
+            'name' => 'Muhammad Raihan',
+            'email' => 'raeihann.jo@gmail.com',
+            'username' => 'th6man5',
+            'kelas' => 'XII',
+            'jurusan' => 'RPL 2',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+            'role_id' => '4',
+        ]);
+
         User::factory(5)->penjual()->create();
 
         User::factory(5)->kurir()->create();
