@@ -12,6 +12,15 @@ class ListUsers extends Component
     public $search;
     public $roleFilter;
 
+    public $searchTerm = null;
+    protected $queryString = ['searchTerm' => ['except' => '']];
+
+    // fix Laravel Livewire Searching Issue on Page >1
+    public function updatingSearch()
+    {
+        $this->resetPage();
+    }
+
     public function render()
     {
         return view('livewire.list-users', [
