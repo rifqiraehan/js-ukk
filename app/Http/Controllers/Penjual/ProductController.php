@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Penjual;
 
-use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Penjual\StoreProductRequest;
+use App\Http\Requests\UpdateUserRequest;
 
 class ProductController extends Controller
 {
@@ -14,7 +17,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('penjual.product.index');
+        // mengambil produk hanya jika user_id sama dengan id user saat ini
+        $products = Product::where('user_id', auth()->user()->id)->paginate(8);
+
+        return view('penjual.product.index', compact('products'));
     }
 
     /**
@@ -24,62 +30,60 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        return view('penjual.product.create');
     }
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        // handle the uploaded image
+        $foto = $request->file('foto');
+        $nama_foto = time().'.'.$foto->getClientOriginalExtension();
+        $foto->storeAs('app/public/product', $nama_foto);
+
+        $validated['foto'] = $nama_foto;
+        $product = Product::create($validated);
+        return redirect()->route('penjual.product.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('penjual.product.show', compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product)
     {
-        //
+        return view('penjual.product.edit', compact('product'));
     }
 
     /**
      * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, Product $product)
     {
-        //
+        $product->update($request->validated());
+        return redirect()->route('penjual.product.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        return redirect()->route('penjual.product.index');
     }
 }
