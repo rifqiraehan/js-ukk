@@ -9,7 +9,7 @@
 
 <section class="py-10 bg-gray-100">
   <div class="ml-12 px-6">
-    <a href="#" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Tambah Produk</a>
+    <a href="{{ route('penjual.product.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Tambah Produk</a>
   </div>
 
   <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -17,7 +17,10 @@
       <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
         <a href="#">
           <div class="relative flex items-end overflow-hidden rounded-xl">
-            <img src="https://source.unsplash.com/random/800x450/?food,fruit,drinking,{{ rand() }}" alt="Food Image" width="800" height="450" />
+            {{-- <img src="https://source.unsplash.com/random/800x450/?food,fruit,drinking,{{ rand() }}" alt="Food Image" width="800" height="450" /> --}}
+
+            <img src="{{ asset('storage/'. $product->foto) }}" alt="product image" width="800" height="450">
+
           </div>
           <div class="mt-1 p-2">
             <h2 class="text-slate-700">{{ $product->name }}</h2>

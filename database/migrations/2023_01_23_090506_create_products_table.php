@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('detail');
             $table->integer('harga');
             $table->integer('stok');
-            $table->string('foto');
+            $table->string('foto')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

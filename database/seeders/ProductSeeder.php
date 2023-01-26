@@ -14,7 +14,7 @@ class ProductSeeder extends Seeder
      */
     public function run()
     {
-        Product::create([
+        /* Product::create([
             'name' => 'Nasi Kuning',
             'detail' => 'Dengan telur dan ayam',
             'harga' => '6000',
@@ -156,8 +156,8 @@ class ProductSeeder extends Seeder
             'stok' => '10',
             'foto' => '',
             'user_id' => '7'
-        ]);
+        ]); */
 
-        // Product::factory(5)->create();
+        Product::factory(5)->create();
     }
 }
