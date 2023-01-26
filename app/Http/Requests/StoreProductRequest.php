@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Penjual;
+namespace App\Http\Requests;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Http\FormRequest;
@@ -40,6 +40,9 @@ class StoreProductRequest extends FormRequest
             'stok' => [
                 'required',
                 'integer',
+                'numeric',
+                'min:1',
+                'max:50',
             ],
             'foto' => [
                 'file',
