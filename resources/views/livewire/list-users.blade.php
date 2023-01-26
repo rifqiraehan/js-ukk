@@ -9,7 +9,6 @@
             <div class="hidden md:block relative text-gray-700 focus-within:text-gray-600 m-2">
                 <select wire:model="roleFilter" id="roleFilter" class="py-2 text-sm text-gray bg-gray-100 rounded-md focus:outline-none focus:bg-gray-200 focus:text-gray-700">
                     <option value="">All</option>
-                    <option value="Administrator">Administrator</option>
                     <option value="Penjual">Penjual</option>
                     <option value="Kurir">Kurir</option>
                     <option value="Murid">Murid</option>
@@ -109,7 +108,7 @@
                                     </td>
 
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                                        <a href="{{ route('admin.users.show', $user->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">Lihat</a>
+                                        <a href="{{ route('admin.users.show', $user->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">Detail</a>
                                         <a href="{{ route('admin.users.edit', $user->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
                                         <form class="inline-block" action="{{ route('admin.users.destroy', $user->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                             <input type="hidden" name="_method" value="DELETE">
