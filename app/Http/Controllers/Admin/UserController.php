@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Role;
+use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Models\User;
 
 class UserController extends Controller
 {
@@ -39,7 +41,17 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $users = User::all();
+
+        $selectedKelas = $user->kelas;
+        $classes = ['X', 'XI', 'XII', 'XIII'];
+        $locates = ['Lokasi A', 'Lokasi B'];
+
+        $selectedLokasi = $user->lokasi;
+
+        $roles = Role::all();
+        $selectedRoleId = $user->role_id;
+        return view('admin.users.edit', compact('user', 'roles', 'selectedRoleId', 'users', 'classes', 'locates', 'selectedKelas', 'selectedLokasi'));
     }
 
     public function update(UpdateUserRequest $request, User $user)
