@@ -6,7 +6,8 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
-use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UpdateProductRequest;
+use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
 {
@@ -42,11 +43,15 @@ class ProductController extends Controller
         $validated = $request->validated();
 
         // handle the uploaded image
-        $foto = $request->file('foto');
-        $nama_foto = time().'.'.$foto->getClientOriginalExtension();
-        $foto->storeAs('app/public/product', $nama_foto);
+        if ($request->hasFile('foto')) {
+            $file = $request->file('foto');
+            $fileName = uniqid().'.'.$file->getClientOriginalExtension();
+            $file->storeAs('public/product', $fileName);
+        }
 
-        $validated['foto'] = $nama_foto;
+        // Add the user_id to the request data
+        $validated['user_id'] = Auth::id();
+
         $product = Product::create($validated);
         return redirect()->route('penjual.product.index');
     }
@@ -72,7 +77,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUserRequest $request, Product $product)
+    public function update(UpdateProductRequest $request, Product $product)
     {
         $product->update($request->validated());
         return redirect()->route('penjual.product.index');
