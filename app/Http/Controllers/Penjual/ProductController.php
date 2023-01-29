@@ -8,13 +8,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function index()
     {
@@ -26,8 +25,6 @@ class ProductController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
@@ -36,29 +33,30 @@ class ProductController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     * @return \Illuminate\Http\Response
      */
     public function store(StoreProductRequest $request)
     {
+        // dd($request->all());
         $validated = $request->validated();
 
         // handle the uploaded image
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $fileName = uniqid().'.'.$file->getClientOriginalExtension();
-            $file->storeAs('public/product', $fileName);
+            $file->move(public_path('product'), $fileName);
+            $validated['foto'] = 'product/'.$fileName;
         }
 
         // Add the user_id to the request data
         $validated['user_id'] = Auth::id();
 
         $product = Product::create($validated);
+
         return redirect()->route('penjual.product.index');
     }
 
     /**
      * Display the specified resource.
-     *
      */
     public function show(Product $product)
     {
@@ -67,7 +65,6 @@ class ProductController extends Controller
 
     /**
      * Show the form for editing the specified resource.
-     *
      */
     public function edit(Product $product)
     {
@@ -79,16 +76,40 @@ class ProductController extends Controller
      */
     public function update(UpdateProductRequest $request, Product $product)
     {
-        $product->update($request->validated());
+        $validated = $request->validated();
+
+        if ($request->hasFile('foto')) {
+            // Handle the uploaded image
+            $file = $request->file('foto');
+            $fileName = uniqid().'.'.$file->getClientOriginalExtension();
+
+            $path = $file->storeAs('product/', $fileName);
+
+            // Delete the old image
+            Storage::delete($product->foto);
+
+            // Update the product's image path in the database
+            $validated['foto'] = $fileName;
+        } else {
+            // Keep the existing image path
+            $validated['foto'] = $product->foto;
+        }
+
+
+        $product->update($validated);
         return redirect()->route('penjual.product.index');
     }
 
+
     /**
      * Remove the specified resource from storage.
-     *
      */
     public function destroy(Product $product)
     {
+        // Delete the image
+        Storage::delete($product->foto);
+
+        Product::destroy($product->id);
         return redirect()->route('penjual.product.index');
     }
 }

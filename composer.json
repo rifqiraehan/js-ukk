@@ -6,13 +6,15 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "barryvdh/laravel-dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "intervention/image": "^2.7",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.13",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.5"
+        "livewire/livewire": "^2.5",
+        "mpdf/mpdf": "^9.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

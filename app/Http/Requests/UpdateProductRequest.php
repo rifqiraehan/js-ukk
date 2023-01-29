@@ -43,11 +43,11 @@ class UpdateProductRequest extends FormRequest
                 'integer',
             ],
             'foto' => [
+                'sometimes', // to indicate that the field is optional
                 'file',
                 'image',
                 'mimes:jpeg,png,jpg',
                 'max:2048',
-                'required',
             ],
             'user_id' => [
                 'required',

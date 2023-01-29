@@ -39,7 +39,7 @@
                             @enderror
                         </div>
 
-                        <div class="px-4 py-5 bg-white sm:p-6">
+                        {{-- <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="role_id" class="block font-medium text-sm text-gray-700">Tambahkan Sebagai:</label>
                             <select name="role_id" id="role_id" class="form-multiselect block rounded-md shadow-sm mt-1 block w-full">
                                 @foreach($roles as $role)
@@ -51,7 +51,7 @@
                             @error('role_id')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
-                        </div>
+                        </div> --}}
 
 
                         {{-- For Siswa --}}
@@ -76,6 +76,10 @@
                                     <p class="text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
+
+                            <div class="px-4 py-3 bg-white sm:p-6"></div>
+                            <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
+                            </div>
                         @endif
 
                         {{-- Penjual --}}
@@ -92,11 +96,18 @@
                                 @enderror
                             </div>
 
-                            <div class="px-4 py-5 bg-white sm:p-6">
-                            </div>
+                            {{-- <div class="px-4 py-5 bg-white sm:p-6">
+                            </div> --}}
 
                             <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
                             </div>
+                        @endif
+
+                        @if ($user->role_id == 3)
+                            <div class="px-4 py-5 bg-white sm:p-6"></div>
+                            <div class="px-4 py-5 bg-white sm:p-6"></div>
+
+                            <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
                         @endif
 
                         <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">

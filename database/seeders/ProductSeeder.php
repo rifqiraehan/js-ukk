@@ -158,6 +158,6 @@ class ProductSeeder extends Seeder
             'user_id' => '7'
         ]); */
 
-        Product::factory(5)->create();
+        Product::factory(20)->create();
     }
 }

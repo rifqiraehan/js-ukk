@@ -36,7 +36,7 @@ class ListUsers extends Component
                     $query->where('name', 'like', '%' . $this->roleFilter . '%');
                 });
             })->orderBy('role_id')
-            
+
             // exclude users with role_id == 1
             ->whereHas('role', function ($query) {
                 $query->where('id', '!=', 1);

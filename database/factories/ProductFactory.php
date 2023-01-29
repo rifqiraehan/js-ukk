@@ -36,7 +36,7 @@ class ProductFactory extends Factory
             if ($response->getStatusCode() === 200) {
                 $contents = $response->getBody()->getContents();
                 $fileName = 'product/'.uniqid().'.jpg';
-                Storage::put($fileName, $contents);
+                Storage::disk('public')->put($fileName, $contents);
                 $image = $fileName;
             }
         } catch (\Exception $e) {
