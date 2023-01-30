@@ -79,22 +79,13 @@ class ProductController extends Controller
         $validated = $request->validated();
 
         if ($request->hasFile('foto')) {
-            // Handle the uploaded image
             $file = $request->file('foto');
             $fileName = uniqid().'.'.$file->getClientOriginalExtension();
-
-            $path = $file->storeAs('product/', $fileName);
-
-            // Delete the old image
-            Storage::delete($product->foto);
-
-            // Update the product's image path in the database
-            $validated['foto'] = $fileName;
-        } else {
-            // Keep the existing image path
-            $validated['foto'] = $product->foto;
+            $file->move(public_path('product'), $fileName);
+            $validated['foto'] = 'product/'.$fileName;
         }
 
+        $validated['user_id'] = Auth::id();
 
         $product->update($validated);
         return redirect()->route('penjual.product.index');

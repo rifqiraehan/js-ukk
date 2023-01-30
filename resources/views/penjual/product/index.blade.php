@@ -7,7 +7,7 @@
 
 <!-- Product List -->
 <section class="py-10 bg-gray-100">
-  <div class="ml-12 px-6">
+  <div class="ml-[4rem] px-6">
     <a href="{{ route('penjual.product.create') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Tambah Produk</a>
   </div>
 
