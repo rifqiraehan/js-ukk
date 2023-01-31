@@ -40,10 +40,10 @@
         </a>
       </article>
     @endforeach
-    </div>
-    <div class="border-b mx-12 border-gray-300"></div>
-    <div class="py-4 mx-12">
-      {{ $products->links() }}
-    </div>
-  </section>
+  </div>
+  <div class="border-b mx-12 border-gray-300"></div>
+  <div class="py-4 mx-12">
+    {{ $products->links() }}
+  </div>
+</section>
 </x-penjual-layout>
