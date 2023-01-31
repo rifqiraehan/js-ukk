@@ -86,6 +86,7 @@ class ProductController extends Controller
         }
 
         $validated['user_id'] = Auth::id();
+        $product->touch();
 
         $product->update($validated);
         return redirect()->route('penjual.product.index');
