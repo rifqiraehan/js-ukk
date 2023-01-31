@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Murid;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +16,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('murid.home.index');
+        $users = User::all();
+        $products = Product::paginate(8);
+        return view('murid.home.index', compact('products', 'users'));
     }
 
     /**
@@ -46,7 +50,10 @@ class HomeController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::find($id);
+        $users = User::all();
+
+        return view('murid.home.show', compact('product', 'users'));
     }
 
     /**
