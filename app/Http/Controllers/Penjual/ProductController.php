@@ -5,10 +5,11 @@ namespace App\Http\Controllers\Penjual;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -68,6 +69,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
+        // dd(public_path() .'/' .$product->foto);
         return view('penjual.product.edit', compact('product'));
     }
 
@@ -79,6 +81,12 @@ class ProductController extends Controller
         $validated = $request->validated();
 
         if ($request->hasFile('foto')) {
+            if($product->foto != null) {
+                if($product->foto != 'default/product.jpeg'){
+                    File::delete(public_path() .'/' .$product->foto);
+                }
+            }
+
             $file = $request->file('foto');
             $fileName = uniqid().'.'.$file->getClientOriginalExtension();
             $file->move(public_path('product'), $fileName);
@@ -99,7 +107,11 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         // Delete the image
-        Storage::delete($product->foto);
+        if($product->foto != null) {
+            if($product->foto != 'default/product.jpeg'){
+                File::delete(public_path() .'/' .$product->foto);
+            }
+        }
 
         Product::destroy($product->id);
         return redirect()->route('penjual.product.index');

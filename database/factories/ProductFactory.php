@@ -6,6 +6,7 @@ use GuzzleHttp\Client as GuzzleClient;
 use App\Models\Product;
 use Faker\Generator as Faker;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Laravel\Jetstream\Features;
@@ -29,27 +30,13 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
-        $image = null;
-        try {
-            $client = new GuzzleClient();
-            $response = $client->get('https://source.unsplash.com/random/800x450/?food,cuisine,cake');
-            if ($response->getStatusCode() === 200) {
-                $contents = $response->getBody()->getContents();
-                $fileName = 'product/'.uniqid().'.jpg';
-                Storage::disk('public')->put($fileName, $contents);
-                $image = $fileName;
-            }
-        } catch (\Exception $e) {
-            echo $e->getMessage();
-        }
-
         return [
             'name' => $this->faker->word(),
             'detail' => $this->faker->sentence(),
             'harga' => $this->faker->randomNumber(5),
             'stok' => $this->faker->randomNumber(2),
-            'foto' => $image,
-            'user_id' => 2,
+            'foto' => 'default/product.jpeg',
+            'user_id' => rand(2, 7),
         ];
     }
 

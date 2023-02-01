@@ -29,6 +29,8 @@ class UserSeeder extends Seeder
             'role_id' => '2',
         ]);
 
+        User::factory(5)->penjual()->create();
+
         User::create([
             'name' => 'Pak John',
             'email' => 'partner@gmail.com',
@@ -37,6 +39,8 @@ class UserSeeder extends Seeder
             'password' => Hash::make('secret'),
             'role_id' => '3',
         ]);
+
+        User::factory(5)->kurir()->create();
 
         User::create([
             'name' => 'Budi Santoso',
@@ -59,10 +63,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('secret'),
             'role_id' => '4',
         ]);
-
-        User::factory(5)->penjual()->create();
-
-        User::factory(5)->kurir()->create();
 
         User::factory(5)->murid()->create();
     }
