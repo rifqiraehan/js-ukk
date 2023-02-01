@@ -24,7 +24,7 @@
 
             <div class="mt-3 flex items-end justify-between">
               <p>
-                <span class="text-lg font-bold text-blue-500">Rp {{ $product->harga }}</span>
+                <span class="text-lg font-bold text-blue-500">Rp {{ number_format($product->harga ?? 0, 0, '.', '.'); }}</span>
                 {{-- <span class="text-sm text-slate-400">/night</span> --}}
               </p>
 

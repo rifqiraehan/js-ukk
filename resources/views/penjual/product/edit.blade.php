@@ -55,7 +55,7 @@
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="foto" class="block font-medium text-sm text-gray-700">Foto</label>
                             @if ($product->foto)
-                                <img src="{{ asset($product->foto) }}" alt="{{ $product->name }}">
+                                <img class="img-preview" src="{{ asset($product->foto) }}" alt="{{ $product->name }}">
                             @else
                                 <img class="img-preview img-fluid mb-3">
                             @endif
@@ -78,9 +78,12 @@
                             <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
                                 Edit
                             </button>
+
+
                         </div>
                     </div>
                 </form>
+                
             </div>
         </div>
     </div>
