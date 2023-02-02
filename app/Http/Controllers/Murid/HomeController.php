@@ -14,10 +14,15 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $seller = $request->get('penjual');
         $users = User::all();
-        $products = Product::paginate(8);
+        if ($seller) {
+            $products = Product::where('user_id', $seller)->paginate(8);
+        } else {
+            $products = Product::paginate(8);
+        }
         return view('murid.home.index', compact('products', 'users'));
     }
 

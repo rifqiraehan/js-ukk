@@ -1,7 +1,10 @@
 <x-murid-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Product List') }}
+            {{ __('Daftar Produk') }}
+            @if (request()->has('penjual'))
+                <span class="text-xl text-gray-500">{{ $users->firstWhere('id', request()->penjual)->name }}</span>
+            @endif
         </h2>
     </x-slot>
 
@@ -16,7 +19,9 @@
             </div>
             <div class="mt-1 p-2">
                 <h2 class="text-slate-700">{{ $product->name }}</h2>
-                <p class="text-sm text-slate-500">{{ $users->firstWhere('id', $product->user_id)->name }}</p>
+
+                <a class="text-sm text-slate-500 hover:text-slate-700" href="{{ route('murid.home.index', ['penjual' => $users->firstWhere('id', $product->user_id)->id]) }}">{{ $users->firstWhere('id', $product->user_id)->name }}</a>
+
                 <p class="mt-2 text-sm text-slate-400">Stok: {{ $product->stok }}</p>
 
               <div class="mt-3 flex items-end justify-between">
