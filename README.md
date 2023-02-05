@@ -9,4 +9,8 @@ Repository for UKK. This is about system information of school canteen.
 1. InvalidArgumentException: Unable to locate a class or view for component [admin-layout] (FIXED)
 2. Belum bisa melakukan update UpdateUserProfileInformation (FIXED)
 
-##
+## Notes:
+- View reset password:
+    - vendor\laravel\framework\src\Illuminate\Notifications\resources\views\email.blade.php
+    - storage\framework\views\571d3c4e8e9034208434e381f0d11727091c406a.php
+    - vendor\laravel\jetstream\resources\views\components\validation-errors.blade.php (Whoops! Something wrong.)
