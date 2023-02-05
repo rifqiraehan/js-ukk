@@ -30,8 +30,21 @@
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="harga" class="block font-medium text-sm text-gray-700">Harga</label>
-                            <input type="number" name="harga" id="harga" class="form-input rounded-md shadow-sm mt-1 block w-full" value="{{ old('harga', '') }}" placeholder="Rp" />
+                            <label for="harga" class="block font-medium text-sm text-gray-700">
+                                Harga
+                            </label>
+                            <div class="relative mt-1 rounded-md shadow-sm">
+                                <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <span class="text-gray-500 sm:text-sm">Rp</span>
+                                </div>
+                                <input
+                                type="text"
+                                name="harga"
+                                id="harga"
+                                class="form-input rounded-md shadow-sm mt-1 block w-full pl-8 pr-12"
+                                value="{{ old('harga', '') }}"
+                                />
+                            </div>
                             @error('harga')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
