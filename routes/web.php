@@ -39,5 +39,6 @@ Route::group(['middleware' => 'auth'], function() {
     });
     Route::group(['middleware' => 'role:murid', 'prefix' => 'murid', 'as' => 'murid.'], function() {
         Route::resource('home', \App\Http\Controllers\Murid\HomeController::class);
+        Route::get('cart', [\App\Http\Controllers\Murid\CartController::class, 'index'])->name('cart');
     });
 });

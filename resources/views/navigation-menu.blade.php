@@ -24,7 +24,7 @@
 
                     @can('manage-products')
                     <x-jet-nav-link href="{{ route('penjual.product.index') }}" :active="request()->routeIs('penjual.product.index')">
-                        {{ __('Products') }}
+                        {{ __('Produk') }}
                     </x-jet-nav-link>
                     @endif
 
@@ -36,9 +36,14 @@
 
                     @if (auth()->user()->role_id == 4)
                         <x-jet-nav-link href="{{ route('murid.home.index') }}" :active="request()->routeIs('murid.home.index')">
-                            {{ __('Products') }}
+                            {{ __('Produk') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('murid.cart') }}" :active="request()->routeIs('murid.cart')">
+                            {{ __('Keranjang') }}
                         </x-jet-nav-link>
                     @endif
+
                 </div>
             </div>
 
@@ -172,7 +177,7 @@
 
             @can('manage-products')
                 <x-jet-responsive-nav-link href="{{ route('penjual.product.index') }}" :active="request()->routeIs('penjual.product.index')">
-                    {{ __('Products') }}
+                    {{ __('Produk') }}
                 </x-jet-responsive-nav-link>
             @endif
 
@@ -184,7 +189,10 @@
 
             @if (auth()->user()->role_id == 4)
                 <x-jet-responsive-nav-link href="{{ route('murid.home.index') }}" :active="request()->routeIs('murid.home.index')">
-                    {{ __('Products') }}
+                    {{ __('Produk') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('murid.cart') }}" :active="request()->routeIs('murid.cart')">
+                    {{ __('Keranjang') }}
                 </x-jet-responsive-nav-link>
             @endif
         </div>
