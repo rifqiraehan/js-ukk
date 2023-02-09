@@ -9,6 +9,10 @@ class CartController extends Controller
 {
     public function index()
     {
+        $carts = auth()->user()->carts;
+
+        dd($carts);
+
         return view('murid.cart');
     }
 }
