@@ -11,8 +11,8 @@ class CartController extends Controller
     {
         $carts = auth()->user()->carts;
 
-        dd($carts);
-
-        return view('murid.cart');
+        return view('murid.cart', [
+            'carts' => $carts
+        ]);
     }
 }

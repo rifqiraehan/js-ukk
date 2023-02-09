@@ -39,7 +39,7 @@
                             {{ __('Produk') }}
                         </x-jet-nav-link>
 
-                        <x-jet-nav-link href="{{ route('murid.cart') }}" :active="request()->routeIs('murid.cart')">
+                        <x-jet-nav-link href="{{ route('murid.cart.index') }}" :active="request()->routeIs('murid.cart.index')">
                             {{ __('Keranjang') }}
                             {{-- <p class="ml-1.5 flex h-2 w-2 items-center justify-center rounded-full bg-indigo-500 p-3 text-xs text-white">
                             </p> --}}
@@ -193,7 +193,7 @@
                 <x-jet-responsive-nav-link href="{{ route('murid.home.index') }}" :active="request()->routeIs('murid.home.index')">
                     {{ __('Produk') }}
                 </x-jet-responsive-nav-link>
-                <x-jet-responsive-nav-link href="{{ route('murid.cart') }}" :active="request()->routeIs('murid.cart')">
+                <x-jet-responsive-nav-link href="{{ route('murid.cart.index') }}" :active="request()->routeIs('murid.cart.index')">
                     {{ __('Keranjang') }}
                 </x-jet-responsive-nav-link>
             @endif

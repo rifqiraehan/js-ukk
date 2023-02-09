@@ -7,7 +7,7 @@
 
     <div class="flex flex-col w-full p-6 space-y-4 sm:p-10">
         <ul class="flex flex-col divide-y divide-gray-700">
-            @for ($i = 0; $i < 3; $i++)
+            @foreach ($carts as $cart)
                 <li class="flex flex-col py-6 sm:flex-row sm:justify-between">
                     <div class="flex w-full space-x-2 sm:space-x-4">
                         <img class="flex-shrink-0 object-cover w-20 h-20 dark:border-transparent rounded outline-none sm:w-32 sm:h-32 dark:bg-gray-500"
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                 </li>
-            @endfor
+            @endforeach
         </ul>
         <div class="space-y-1 text-right">
             <p>Total Harga:
