@@ -22,7 +22,7 @@
                 </div>
               </div>
               <div class="flex">
-                <span class="title-font font-medium text-2xl text-gray-900">                                        Rp {{ number_format($product->harga ?? 0, 0, '.', '.'); }}
+                <span class="title-font font-medium text-2xl text-gray-900">Rp {{ number_format($product->harga ?? 0, 0, '.', '.'); }}
                 </span>
                 <div class="flex items-center ml-auto space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">

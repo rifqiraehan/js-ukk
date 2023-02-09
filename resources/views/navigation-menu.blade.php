@@ -41,6 +41,8 @@
 
                         <x-jet-nav-link href="{{ route('murid.cart') }}" :active="request()->routeIs('murid.cart')">
                             {{ __('Keranjang') }}
+                            {{-- <p class="ml-1.5 flex h-2 w-2 items-center justify-center rounded-full bg-indigo-500 p-3 text-xs text-white">
+                            </p> --}}
                         </x-jet-nav-link>
                     @endif
 
