@@ -29,13 +29,13 @@
                     @endif
 
                     @if (auth()->user()->role_id == 3)
-                        <x-jet-nav-link href="{{ route('kurir.home.index') }}" :active="request()->routeIs('kurir.home.index')">
+                        <x-jet-nav-link href="{{ route('kurir.product.index') }}" :active="request()->routeIs('kurir.product.index')">
                             {{ __('Request') }}
                         </x-jet-nav-link>
                     @endif
 
                     @if (auth()->user()->role_id == 4)
-                        <x-jet-nav-link href="{{ route('murid.home.index') }}" :active="request()->routeIs('murid.home.index')">
+                        <x-jet-nav-link href="{{ route('murid.product.index') }}" :active="request()->routeIs('murid.product.index')">
                             {{ __('Produk') }}
                         </x-jet-nav-link>
 
@@ -184,13 +184,13 @@
             @endif
 
             @if (auth()->user()->role_id == 3)
-                <x-jet-responsive-nav-link href="{{ route('kurir.home.index') }}" :active="request()->routeIs('kurir.home.index')">
+                <x-jet-responsive-nav-link href="{{ route('kurir.product.index') }}" :active="request()->routeIs('kurir.product.index')">
                     {{ __('Request') }}
                 </x-jet-responsive-nav-link>
             @endif
 
             @if (auth()->user()->role_id == 4)
-                <x-jet-responsive-nav-link href="{{ route('murid.home.index') }}" :active="request()->routeIs('murid.home.index')">
+                <x-jet-responsive-nav-link href="{{ route('murid.product.index') }}" :active="request()->routeIs('murid.product.index')">
                     {{ __('Produk') }}
                 </x-jet-responsive-nav-link>
                 <x-jet-responsive-nav-link href="{{ route('murid.cart.index') }}" :active="request()->routeIs('murid.cart.index')">

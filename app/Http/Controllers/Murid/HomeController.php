@@ -23,7 +23,7 @@ class HomeController extends Controller
         } else {
             $products = Product::paginate(8);
         }
-        return view('murid.home.index', compact('products', 'users'));
+        return view('murid.product.index', compact('products', 'users'));
     }
 
     /**
@@ -58,7 +58,7 @@ class HomeController extends Controller
         $product = Product::find($id);
         $users = User::all();
 
-        return view('murid.home.show', compact('product', 'users'));
+        return view('murid.product.show', compact('product', 'users'));
     }
 
     /**

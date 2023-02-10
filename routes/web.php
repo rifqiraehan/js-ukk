@@ -37,8 +37,8 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:kurir', 'prefix' => 'kurir', 'as' => 'kurir.'], function() {
         Route::resource('home', \App\Http\Controllers\Kurir\HomeController::class);
     });
-    Route::group(['middleware' => 'role:murid', 'prefix' => 'murid', 'as' => 'murid.'], function() {
-        Route::resource('home', \App\Http\Controllers\Murid\HomeController::class);
+    Route::group(['middleware' => 'role:murid', 'as' => 'murid.'], function() {
+        Route::resource('product', \App\Http\Controllers\Murid\HomeController::class);
         Route::resource('cart', \App\Http\Controllers\Murid\CartController::class);
     });
 });

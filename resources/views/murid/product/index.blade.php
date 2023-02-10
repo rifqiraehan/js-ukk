@@ -13,14 +13,14 @@
     <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       @foreach ($products as $product )
         <article class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
-          <a href="{{ route('murid.home.show', $product->id) }}">
+          <a href="{{ route('murid.product.show', $product->id) }}">
             <div class="relative flex items-end overflow-hidden rounded-xl">
               <img src="{{ asset($product->foto) }}" alt="{{ $product->name }}" width="800" height="450">
             </div>
             <div class="mt-1 p-2">
                 <h2 class="text-slate-700">{{ $product->name }}</h2>
 
-                <a class="text-sm text-slate-500 hover:text-slate-700" href="{{ route('murid.home.index', ['penjual' => $users->firstWhere('id', $product->user_id)->id]) }}">{{ $users->firstWhere('id', $product->user_id)->name }}</a>
+                <a class="text-sm text-slate-500 hover:text-slate-700" href="{{ route('murid.product.index', ['penjual' => $users->firstWhere('id', $product->user_id)->id]) }}">{{ $users->firstWhere('id', $product->user_id)->name }}</a>
 
                 <p class="mt-2 text-sm text-slate-400">Stok: {{ $product->stok }}</p>
 

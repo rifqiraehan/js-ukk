@@ -53,7 +53,7 @@
             <p class="text-sm dark:text-gray-500">Belum termasuk biaya pengiriman</p>
         </div>
         <div class="flex justify-end space-x-4">
-            <a href="{{ route('murid.home.index') }}" class="px-6 py-2 border rounded-md dark:border-violet-400">
+            <a href="{{ route('murid.product.index') }}" class="px-6 py-2 border rounded-md dark:border-violet-400">
                 Lanjut
                 <span class="sr-only sm:not-sr-only">Belanja</span>
             </a>
