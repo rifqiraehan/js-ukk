@@ -26,4 +26,9 @@ class Cart extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // public function getSubTotalAttribute()
+    // {
+    //     return $this->product->harga * $this->quantity;
+    // }
 }
