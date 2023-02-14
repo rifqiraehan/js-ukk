@@ -30,12 +30,14 @@ class ProductFactory extends Factory
      */
     public function definition()
     {
+        $images = array_diff(scandir(public_path('/images/default/goods')), ['.', '..']);
+
         return [
             'name' => $this->faker->word(),
             'detail' => $this->faker->sentence(),
-            'harga' => $this->faker->randomNumber(5),
+            'harga' => $this->faker->randomNumber(4),
             'stok' => $this->faker->randomNumber(2),
-            'foto' => 'default/product.jpeg',
+            'foto' => 'images/default/goods/'.$images[array_rand($images)],
             'user_id' => rand(2, 7),
         ];
     }

@@ -23,8 +23,29 @@
         </div>
       @endif
 
+      @if (session('success'))
+        <div class="w-full text-white bg-green-500 rounded-md">
+          <div class="container flex items-center justify-between px-6 py-4 mx-auto">
+              <div class="flex">
+                  <svg viewBox="0 0 40 40" class="w-6 h-6 fill-current">
+                      <path d="M20 3.36667C10.8167 3.36667 3.3667 10.8167 3.3667 20C3.3667 29.1833 10.8167 36.6333 20 36.6333C29.1834 36.6333 36.6334 29.1833 36.6334 20C36.6334 10.8167 29.1834 3.36667 20 3.36667ZM19.1334 33.3333V22.9H13.3334L21.6667 6.66667V17.1H27.25L19.1334 33.3333Z">
+                      </path>
+                  </svg>
+
+                  <p class="mx-3">{{ session('success') }}</p>
+              </div>
+
+              <button class="p-1 cursor-pointer opacity-75 hover:opacity-100 rounded-md" onclick="this.parentNode.parentNode.style.display='none'">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                   <path d="M6 18L18 6M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+             </button>
+          </div>
+        </div>
+      @endif
+
       <div class="lg:w-4/5 mx-auto flex flex-wrap mt-4">
-        <img alt="ecommerce" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="{{ asset($product->foto) }}">
+        <img alt="produk" class="lg:w-1/2 w-full object-cover object-center rounded border border-gray-200" src="{{ asset($product->foto) }}">
         <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           <h2 class="text-sm title-font text-gray-500 tracking-widest">Nama Produk</h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium mb-3">{{ $product->name }}</h1>

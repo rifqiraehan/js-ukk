@@ -44,8 +44,8 @@ class ProductController extends Controller
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
             $fileName = uniqid().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('product'), $fileName);
-            $validated['foto'] = 'product/'.$fileName;
+            $file->move(public_path('images/product'), $fileName);
+            $validated['foto'] = 'images/product/'.$fileName;
         }
 
         // Add the user_id to the request data
@@ -89,8 +89,8 @@ class ProductController extends Controller
 
             $file = $request->file('foto');
             $fileName = uniqid().'.'.$file->getClientOriginalExtension();
-            $file->move(public_path('product'), $fileName);
-            $validated['foto'] = 'product/'.$fileName;
+            $file->move(public_path('images/product'), $fileName);
+            $validated['foto'] = 'images/product/'.$fileName;
         }
 
         $validated['user_id'] = Auth::id();

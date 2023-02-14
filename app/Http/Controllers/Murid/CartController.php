@@ -9,7 +9,7 @@ class CartController extends Controller
 {
     public function index()
     {
-        $carts = auth()->user()->carts;
+        $carts = auth()->user()->carts->load('product');
 
         return view('murid.cart', [
             'carts' => $carts
@@ -18,14 +18,13 @@ class CartController extends Controller
 
     function store(Request $request)
     {
-        return redirect()->back()->with('error', 'Stock tidak mencukupi');
         $request->validate([
             'product_id' => 'required|exists:products,id',
         ]);
 
         $product = \App\Models\Product::find($request->product_id);
 
-        if ($product->stock < 1) {
+        if ($product->stok < 1) {
             return redirect()->back()->with('error', 'Stock tidak mencukupi');
         }
 
@@ -34,16 +33,27 @@ class CartController extends Controller
             ->first();
 
         if ($cart) {
-            $cart->qty += 1;
+            $cart->quantity += 1;
             $cart->save();
         } else {
             $cart = \App\Models\Cart::create([
                 'user_id' => auth()->user()->id,
                 'product_id' => $request->product_id,
-                'qty' => 1
+                'quantity' => 1
             ]);
         }
 
         return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang');
+    }
+
+    function destroy($id)
+    {
+        $cart = \App\Models\Cart::find($id);
+
+        if ($cart) {
+            $cart->delete();
+        }
+
+        return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang');
     }
 }

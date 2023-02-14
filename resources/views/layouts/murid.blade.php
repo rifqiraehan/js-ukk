@@ -40,6 +40,12 @@
         @stack('modals')
 
         @livewireScripts
+
+        @wireUiScripts
+        <script src="//unpkg.com/alpinejs" defer></script>
+
+        {{-- @wireUiScripts(['nonce': 'csp-token'])
+        @wireUiScripts(['nonce': 'csp-token', 'foo' => true]) --}}
     </body>
     <footer class="text-gray-600 body-font">
         <div class="container px-5 py-4 mx-auto flex items-center sm:flex-row flex-col">
