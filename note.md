@@ -11,7 +11,6 @@ Cart (BelongsTo User, BelongsTo Product)
 - product_id
 - qty
 
-
 =======
 
 Order (HasMany OrderItem)
@@ -22,7 +21,7 @@ Order (HasMany OrderItem)
 - total
 
 OrderItem (BelongsTo Order)
-- id
+- id  
 - order_id
 - product_id
 - sub_total
