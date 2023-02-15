@@ -118,8 +118,11 @@
                         Rp {{ number_format($carts->sum(function ($cart) {return $cart->product->harga * $cart->quantity;}), 0, '.', '.') }}</p>
                 </div>
             </div>
-            <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check
-                out</button>
+            <form action="{{ route('murid.cart.checkout') }}" method="POST">
+                @csrf
+                <button type="submit" class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check
+                    out</button>
+            </form>
         </div>
     </div>
 </div>

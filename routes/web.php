@@ -39,6 +39,10 @@ Route::group(['middleware' => 'auth'], function() {
     });
     Route::group(['middleware' => 'role:murid', 'as' => 'murid.'], function() {
         Route::resource('product', \App\Http\Controllers\Murid\HomeController::class);
-        Route::resource('cart', \App\Http\Controllers\Murid\CartController::class);
+        Route::resource('cart', \App\Http\Controllers\Murid\CartController::class)->only(['index', 'store', 'destroy']);
+        Route::post('cart/checkout', [\App\Http\Controllers\Murid\CheckoutController::class, 'index'])->name('cart.checkout');
+        Route::get('cart/checkout',function(){
+            return redirect()->route('murid.cart.index');
+        });
     });
 });
