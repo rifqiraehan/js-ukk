@@ -1,0 +1,6 @@
+.bg-image {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/kantin/kantin (1).jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

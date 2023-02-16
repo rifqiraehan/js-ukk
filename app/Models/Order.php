@@ -17,7 +17,7 @@ class Order extends Model
         'order_status_id',
     ];
 
-    public function OrderItem()
+    public function OrderItems()
     {
         return $this->hasMany(OrderItem::class);
     }

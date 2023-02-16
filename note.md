@@ -9,13 +9,14 @@ Order (HasMany OrderItem, BelongsTo OrderStatus)
 - total
 - order_status_id
 
-OrderItem (BelongsTo Order)
+OrderItem (BelongsTo Order, BelongsTo Product)
 - id
 - order_id
 - product_id
 - sub_total
 - quantitiy
 
+Product (HasMany orderItems)
 
 ======================================================
 Tugas
