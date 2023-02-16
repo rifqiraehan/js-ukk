@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transactions', function (Blueprint $table) {
+        Schema::create('order_statuses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->enum('metode_pengiriman', ['Ambil Sendiri', 'Diantar Kurir']);
+            $table->string('status');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        Schema::dropIfExists('order_statuses');
     }
 };

@@ -21,7 +21,7 @@
         </style>
     </head>
     <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center min-h-screen sm:items-center py-4 sm:pt-0" style="background-image:linear-gradient(rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.9)), url('https://cdn.pixabay.com/photo/2014/08/14/14/21/shish-kebab-417994_1280.jpg')">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth

@@ -40,9 +40,15 @@ Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:murid', 'as' => 'murid.'], function() {
         Route::resource('product', \App\Http\Controllers\Murid\HomeController::class);
         Route::resource('cart', \App\Http\Controllers\Murid\CartController::class)->only(['index', 'store', 'destroy']);
-        Route::post('cart/checkout', [\App\Http\Controllers\Murid\CheckoutController::class, 'index'])->name('cart.checkout');
-        Route::get('cart/checkout',function(){
+        Route::post('checkout', [\App\Http\Controllers\Murid\CheckoutController::class, 'index'])->name('cart.checkout');
+
+        Route::get('checkout-success',function(){
+            return view('murid.checkout-success');
+        });
+
+        Route::get('checkout',function(){
             return redirect()->route('murid.cart.index');
         });
+        Route::resource('order', \App\Http\Controllers\Murid\OrderController::class)->only(['index', 'show']);
     });
 });

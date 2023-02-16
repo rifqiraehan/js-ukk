@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
         User::factory(5)->kurir()->create();
 
         User::create([
-            'name' => 'Budi Santoso',
+            'name' => 'John Doe',
             'email' => 'murid@gmail.com',
             'username' => 'murid',
             'kelas' => 'X',
@@ -57,6 +57,17 @@ class UserSeeder extends Seeder
             'name' => 'Muhammad Raihan',
             'email' => 'raeihann.jo@gmail.com',
             'username' => 'th6man5',
+            'kelas' => 'XII',
+            'jurusan' => 'RPL 2',
+            'email_verified_at' => now(),
+            'password' => Hash::make('secret'),
+            'role_id' => '4',
+        ]);
+
+        User::create([
+            'name' => 'Akmal Luthfi',
+            'email' => 'akmalluthfi@gmail.com',
+            'username' => 'alfi',
             'kelas' => 'XII',
             'jurusan' => 'RPL 2',
             'email_verified_at' => now(),

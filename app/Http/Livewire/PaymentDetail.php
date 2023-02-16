@@ -10,6 +10,7 @@ class PaymentDetail extends Component
     public $shippingType = 'Ambil Sendiri';
     public $total;
     public $subTotal;
+    public $totalProduct;
     public $shippingCost = 3000;
 
     public function mount()
@@ -17,6 +18,7 @@ class PaymentDetail extends Component
         $this->carts = auth()->user()->carts->load('product');
         $this->subTotal = $this->carts->sum(function ($cart) {return $cart->product->harga * $cart->quantity;});
         $this->total = $this->subTotal;
+        $this->totalProduct = $this->carts->sum('quantity');
     }
 
     public function updateTotal()

@@ -13,19 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('transaction_details', function (Blueprint $table) {
+        Schema::create('order_items', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('transaction_id')->unsigned();
-            $table->foreign('transaction_id')->references('id')->on('transactions')->onDelete('cascade');
+            $table->bigInteger('order_id')->unsigned();
+            $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
+
             $table->bigInteger('product_id')->unsigned();
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
 
-            // digunakan untuk menampung jumlah barang yang dibeli
-            $table->integer('quantity');
-
-            // digunakan untuk menampung harga saat transaksi
-            $table->integer('price');
-            
+            $table->bigInteger('sub_total');
+            $table->bigInteger('quantity');
             $table->timestamps();
         });
     }
@@ -37,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaction_details');
+        Schema::dropIfExists('order_items');
     }
 };
