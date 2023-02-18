@@ -1,7 +1,6 @@
 <x-murid-layout>
-  <section class="text-gray-700 body-font overflow-hidden bg-gray-50">
+  <section class="text-gray-700 body-font overflow-hidden bg-gray-100">
     <div class="container px-5 pb-16 pt-12 mx-auto">
-
       @if (session('error'))
         <div class="w-full text-white bg-red-500 rounded-md">
           <div class="container flex items-center justify-between px-6 py-4 mx-auto">

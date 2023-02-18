@@ -34,26 +34,48 @@
 
                     <p class="font-bold text-lg mb-2">Detail Pesanan</p>
                     <div>
-                        @foreach ($order->orderItems as $item)
+                        @php
+                            $itemsBySeller = [];
+
+                            foreach ($order->orderItems as $item) {
+                                $sellerName = $item->product->user->name;
+
+                                if (!isset($itemsBySeller[$sellerName])) {
+                                    $itemsBySeller[$sellerName] = [
+                                        'totalQuantity' => 0,
+                                        'products' => [],
+                                    ];
+                                }
+
+                                $itemsBySeller[$sellerName]['totalQuantity'] += $item->quantity;
+                                $itemsBySeller[$sellerName]['products'][] = $item;
+                            }
+                        @endphp
+
+                        @foreach ($itemsBySeller as $sellerName => $items)
                             <p class="whitespace-nowrap text-gray-600">
-                                {{ $item->product->user->name }}
+                                {{ $sellerName }}
                                 <span
                                     class="ml-0.5 px-2 inline-flex text-xs leading-5 font-semibold rounded-full whitespace-nowrap
-                                @if ($item->product->user->lokasi == 'Lokasi A') bg-green-100 text-green-800
-                                @elseif($item->product->user->lokasi == 'Lokasi B') bg-purple-100 text-purple-800 @endif">
-                                    {{ $item->product->user->lokasi }}
+                                    @if ($items['products'][0]->product->user->lokasi == 'Lokasi A') bg-green-100 text-green-800
+                                    @elseif($items['products'][0]->product->user->lokasi == 'Lokasi B') bg-purple-100 text-purple-800 @endif">
+                                    {{ $items['products'][0]->product->user->lokasi }}
                                 </span>
                             </p>
 
-                            <div class="grid grid-cols-2 w-full">
-                                <p>{{ $item->product->name }} (x{{ $item->quantity }})</p>
-                                <p class="grid justify-end">Rp {{ number_format($item->sub_total, 0, '.', '.') }}</p>
-                            </div>
+                            @foreach ($items['products'] as $item)
+                                <div class="grid grid-cols-2 w-full">
+                                    <p>{{ $item->product->name }} (x{{ $item->quantity }})</p>
+                                    <p class="grid justify-end">Rp {{ number_format($item->sub_total, 0, '.', '.') }}
+                                    </p>
+                                </div>
+                            @endforeach
 
                             @if (!$loop->last)
                                 <hr class="my-2 border">
                             @endif
                         @endforeach
+
                     </div>
 
                     <hr class="my-4 border">

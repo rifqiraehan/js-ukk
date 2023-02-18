@@ -20,11 +20,6 @@ Product (HasMany orderItems)
 
 ======================================================
 Tugas
-- Buat halaman static order list & order detail 😐
-- Perbaiki Seeder User Penjual ❓
-- Perbaiki Unsur Kirim Mengirim ✅
-- Ubah route /cart/order menjadi /checkout ✅
-- Buat Model & Migrasi untuk order, order item, status order 😐
-- Definisikan juga relasi terhadap model yang lain ✅
-- Buat Seeder untuk data order ✅
+- Handle ketika user akses url checkout success method get
+- buat tampilan daftar pesanan untuk penjual berserta detail pesanan, dan tombol untuk ubah status
 

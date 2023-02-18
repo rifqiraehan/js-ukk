@@ -10,7 +10,10 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = auth()->user()->orders->load('orderItems.product', 'orderStatus');
+        $orders = Order::where('user_id', auth()->id())
+            ->with('orderItems.product', 'orderStatus')
+            ->orderByDesc('created_at')
+            ->paginate(3);
 
         $orderItems = $orders->first()->orderItems;
 
@@ -25,5 +28,12 @@ class OrderController extends Controller
         return view('murid.order.show', compact('order'));
     }
 
+    public function destroy($id)
+    {
+        $order = Order::findOrFail($id);
+        $order->delete();
+
+        return redirect()->route('murid.order.index')->with('success', 'Pesanan berhasil dibatalkan');
+    }
 
 }

@@ -41,14 +41,12 @@ Route::group(['middleware' => 'auth'], function() {
         Route::resource('product', \App\Http\Controllers\Murid\HomeController::class);
         Route::resource('cart', \App\Http\Controllers\Murid\CartController::class)->only(['index', 'store', 'destroy']);
         Route::post('checkout', [\App\Http\Controllers\Murid\CheckoutController::class, 'index'])->name('cart.checkout');
-
-        Route::get('checkout-success',function(){
-            return view('murid.checkout-success');
-        });
+        Route::post('checkout/store', [\App\Http\Controllers\Murid\CheckoutController::class, 'store'])->name('cart.checkout.store');
 
         Route::get('checkout',function(){
             return redirect()->route('murid.cart.index');
         });
-        Route::resource('order', \App\Http\Controllers\Murid\OrderController::class)->only(['index', 'show']);
+
+        Route::resource('order', \App\Http\Controllers\Murid\OrderController::class)->only(['index', 'show', 'destroy']);
     });
 });
