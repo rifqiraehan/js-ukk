@@ -28,7 +28,7 @@
                     <p class="text-base">Nama Pembeli : {{ Auth::user()->name }} ({{ Auth::user()->email }})
                     <p class="text-base">Kelas :<span
                             class="ml-2 px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                            XII RPL 2
+                            {{ Auth::user()->kelas }} {{ Auth::user()->jurusan }}
                         </span>
                         <hr class="my-4 border">
 

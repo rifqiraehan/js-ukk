@@ -44,8 +44,11 @@
                                 bg-yellow-100 text-yellow-800
                                 @elseif ($order->orderStatus->id == 3)
                                 bg-green-100 text-green-800
+                                @elseif ($order->orderStatus->id == 4)
+                                bg-purple-100 text-purple-800
                                 @else
-                                bg-purple-100 text-purple-800 @endif
+                                bg-red-100 text-red-800
+                                @endif
                             ">
                                     {{ $order->orderStatus->status }}
                                 </span>
@@ -69,6 +72,19 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="mb-2">
+                            @if($order->orderStatus->id == 1)
+                                <p class="text-sm text-gray-500">Waktu estimasi pesanan dikonfirmasi penjual adalah pukul {{ $order->created_at->addMinutes(5)->format('H:i') }} WIB.</p>
+                            @elseif($order->orderStatus->id == 2)
+                                <p class="text-sm text-gray-500">Pesanan anda sedang disiapkan oleh penjual.</p>
+                            @elseif($order->orderStatus->id == 3)
+                                <p class="text-sm text-gray-500">Pesanan anda siap diambil! Harap segera ambil pesanan maksimal pukul {{ $order->created_at->addMinutes(25)->format('H:i') }} WIB.</p>
+                            @elseif ($order->orderStatus->id == 4)
+                                <p class="text-sm text-gray-500">Pesanan selesai. Terimakasih telah menggunakan layanan kami.</p>
+                            @else
+                                <p class="text-sm text-gray-500">Pesanan anda dibatalkan. Penjual tidak melakukan konfirmasi selama 15 menit setelah pesanan anda masuk. Hal ini biasa terjadi ketika kantin sedang ramai atau alasan lainnya di luar aplikasi.</p>
+                            @endif
+                        </div>
                         <hr class="mb-4">
                         @foreach ($order->orderItems as $item)
                             <div class="justify-between sm:flex sm:justify-start">
@@ -77,7 +93,7 @@
                                 <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                                     <div class="mt-5 sm:mt-0">
                                         <h2 class="text-lg font-bold text-gray-900">{{ $item->product->name }}</h2>
-                                        <p class="mt-1 text-xs text-gray-700">{{ $item->product->user->name }}</p>
+                                        <p class="mt-1 text-xs text-gray-500">{{ $item->product->user->name }}</p>
                                         <p class="text-sm mt-5">{{ $item->quantity }} x Rp
                                             {{ number_format($item->product->harga, 0, '.', '.') }}</p>
                                     </div>
@@ -92,7 +108,7 @@
                             <hr class="my-4 border">
                         @endforeach
                         <div class="grid grid-cols-2">
-                            <p class="text-gray-700 whitespace-nowrap">Total Belanja:<span
+                            <p class="text-gray-700 whitespace-nowrap">Total Tagihan:<span
                                     class="font-bold ml-2 whitespace-nowrap">Rp
                                     {{ number_format($order->total, 0, '.', '.') }}</span></p>
                             <a href="{{ route('murid.order.show', $order->id) }}">

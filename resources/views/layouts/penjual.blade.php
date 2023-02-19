@@ -15,6 +15,8 @@
 
         <!-- Styles -->
         @livewireStyles
+
+
     </head>
     <body class="font-sans antialiased">
         <x-jet-banner />
@@ -40,5 +42,7 @@
         @stack('modals')
 
         @livewireScripts
+        @wireUiScripts
+        <script src="//unpkg.com/alpinejs" defer></script>  
     </body>
 </html>

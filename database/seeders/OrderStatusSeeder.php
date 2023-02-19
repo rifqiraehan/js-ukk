@@ -30,5 +30,9 @@ class OrderStatusSeeder extends Seeder
         OrderStatus::create([
             'status' => 'Pesanan Selesai',
         ]);
+
+        OrderStatus::create([
+            'status' => 'Pesanan Dibatalkan',
+        ]);
     }
 }

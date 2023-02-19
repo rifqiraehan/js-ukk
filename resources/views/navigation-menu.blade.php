@@ -23,9 +23,13 @@
                     @endif
 
                     @can('manage-products')
-                    <x-jet-nav-link href="{{ route('penjual.product.index') }}" :active="request()->routeIs('penjual.product.index')">
-                        {{ __('Produk') }}
-                    </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('penjual.product.index') }}" :active="request()->routeIs('penjual.product.index')">
+                            {{ __('Produk') }}
+                        </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('penjual.order.index') }}" :active="request()->routeIs('penjual.order.index')">
+                            {{ __('Pesanan') }}
+                        </x-jet-nav-link>
                     @endif
 
                     @if (auth()->user()->role_id == 3)
@@ -184,6 +188,10 @@
             @can('manage-products')
                 <x-jet-responsive-nav-link href="{{ route('penjual.product.index') }}" :active="request()->routeIs('penjual.product.index')">
                     {{ __('Produk') }}
+                </x-jet-responsive-nav-link>
+
+                <x-jet-responsive-nav-link href="{{ route('penjual.order.index') }}" :active="request()->routeIs('penjual.order.index')">
+                    {{ __('Pesanan') }}
                 </x-jet-responsive-nav-link>
             @endif
 
