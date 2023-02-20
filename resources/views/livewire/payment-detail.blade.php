@@ -19,7 +19,7 @@
         </div>
         <hr class="my-4" />
         <div class="flex justify-between">
-            <p class="text-lg font-bold">Total Tagihan</p>
+            <p class="text-lg font-bold">Total Seluruh Tagihan</p>
             <div class="">
                 <p class="mb-1 text-lg font-bold">
                     Rp

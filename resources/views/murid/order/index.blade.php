@@ -39,23 +39,22 @@
                                 {{ $order->created_at->format('H:i') }}
                                 <span
                                     class="lg:ml-2 sm:ml-0 px-2 inline-flex text-base font-semibold rounded-full whitespace-nowrap
-                                @if ($order->orderStatus->id == 1) bg-gray-100 text-gray-800
-                                @elseif ($order->orderStatus->id == 2)
+                                @if ($order->orderItems->first()->orderStatus->id == 1) bg-gray-100 text-gray-800
+                                @elseif ($order->orderItems->first()->orderStatus->id == 2)
                                 bg-yellow-100 text-yellow-800
-                                @elseif ($order->orderStatus->id == 3)
+                                @elseif ($order->orderItems->first()->orderStatus->id == 3)
                                 bg-green-100 text-green-800
-                                @elseif ($order->orderStatus->id == 4)
+                                @elseif ($order->orderItems->first()->orderStatus->id == 4)
                                 bg-purple-100 text-purple-800
                                 @else
-                                bg-red-100 text-red-800
-                                @endif
+                                bg-red-100 text-red-800 @endif
                             ">
-                                    {{ $order->orderStatus->status }}
+                                    {{ $order->orderItems->first()->orderStatus->status }}
                                 </span>
                             </p>
 
                             <div class="grid justify-items-end">
-                                @if ($order->orderStatus->id == 1)
+                                @if ($order->orderItems->first()->orderStatus->id == 1)
                                     <form action="{{ route('murid.order.destroy', $order->id) }}" method="POST"
                                         onsubmit="return confirm('Apakah anda ingin membatalkan pesanan tersebut?')">
                                         @csrf
@@ -73,16 +72,21 @@
                             </div>
                         </div>
                         <div class="mb-2">
-                            @if($order->orderStatus->id == 1)
-                                <p class="text-sm text-gray-500">Waktu estimasi pesanan dikonfirmasi penjual adalah pukul {{ $order->created_at->addMinutes(5)->format('H:i') }} WIB.</p>
-                            @elseif($order->orderStatus->id == 2)
+                            @if ($order->orderItems->first()->orderStatus->id == 1)
+                                <p class="text-sm text-gray-500">Waktu estimasi pesanan dikonfirmasi penjual adalah
+                                    pukul {{ $order->created_at->addMinutes(5)->format('H:i') }} WIB.</p>
+                            @elseif($order->orderItems->first()->orderStatus->id == 2)
                                 <p class="text-sm text-gray-500">Pesanan anda sedang disiapkan oleh penjual.</p>
-                            @elseif($order->orderStatus->id == 3)
-                                <p class="text-sm text-gray-500">Pesanan anda siap diambil! Harap segera ambil pesanan maksimal pukul {{ $order->created_at->addMinutes(25)->format('H:i') }} WIB.</p>
-                            @elseif ($order->orderStatus->id == 4)
-                                <p class="text-sm text-gray-500">Pesanan selesai. Terimakasih telah menggunakan layanan kami.</p>
+                            @elseif($order->orderItems->first()->orderStatus->id == 3)
+                                <p class="text-sm text-gray-500">Pesanan anda siap diambil! Harap segera ambil pesanan
+                                    maksimal pukul {{ $order->created_at->addMinutes(25)->format('H:i') }} WIB.</p>
+                            @elseif ($order->orderItems->first()->orderStatus->id == 4)
+                                <p class="text-sm text-gray-500">Pesanan selesai. Terimakasih telah menggunakan layanan
+                                    kami.</p>
                             @else
-                                <p class="text-sm text-gray-500">Pesanan anda dibatalkan. Penjual tidak melakukan konfirmasi selama 15 menit setelah pesanan anda masuk. Hal ini biasa terjadi ketika kantin sedang ramai atau alasan lainnya di luar aplikasi.</p>
+                                <p class="text-sm text-gray-500">Pesanan anda dibatalkan. Penjual tidak melakukan
+                                    konfirmasi selama 15 menit setelah pesanan anda masuk. Hal ini biasa terjadi ketika
+                                    kantin sedang ramai atau alasan lainnya di luar aplikasi.</p>
                             @endif
                         </div>
                         <hr class="mb-4">
@@ -99,7 +103,7 @@
                                     </div>
                                 </div>
 
-                                <div class="mt-4 flex justify-between sm:space-y-2 sm:mt-0 sm:block sm:space-x-8 mr-4">
+                                <div class="mt-4 flex justify-between sm:space-y-2 sm:mt-0 sm:block sm:space-x-8">
                                     <p class="text-gray-700 whitespace-nowrap grid justify-items-end">Subtotal:</p>
                                     <p class="font-bold whitespace-nowrap grid justify-items-end">Rp
                                         {{ number_format($item->sub_total, 0, '.', '.') }}</p>

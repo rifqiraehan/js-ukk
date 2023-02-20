@@ -12,36 +12,48 @@ class CheckoutController extends Controller
     {
         $carts = auth()->user()->carts->load('product');
 
-        return view('murid.checkout', compact('carts'));
+        // Grouping carts by seller (user_id)
+        $groupedCarts = $carts->groupBy('product.user_id');
+
+        return view('murid.checkout', compact('carts', 'groupedCarts'));
     }
 
     public function store()
     {
-
         $carts = auth()->user()->carts->load('product');
 
-        $total = 0;
-        foreach ($carts as $cart) {
-            $total += $cart->product->harga * $cart->quantity;
-        }
+        // Grouping carts by seller (user_id)
+        $groupedCarts = $carts->groupBy('product.user_id');
 
-        $order = \App\Models\Order::create([
-            'user_id' => auth()->user()->id,
-            'total' => $total,
-            'order_status_id' => 1,
-        ]);
-
-
-        foreach ($carts as $cart) {
-            $order->orderItems()->create([
-                'order_id' => $order->id,
-                'product_id' => $cart->product_id,
-                'sub_total' => $cart->product->harga * $cart->quantity,
-                'quantity' => $cart->quantity,
+        // Looping through grouped carts
+        foreach ($groupedCarts as $groupedCart) {
+            // Creating order
+            $order = \App\Models\Order::create([
+                'user_id' => auth()->user()->id,
+                'total' => 0,
             ]);
-        }
 
-        Cart::where('user_id', auth()->user()->id)->delete();
+            // Creating order items
+            $total = 0;
+            foreach ($groupedCart as $cart) {
+                $order->orderItems()->create([
+                    'order_id' => $order->id,
+                    'product_id' => $cart->product_id,
+                    'sub_total' => $cart->product->harga * $cart->quantity,
+                    'quantity' => $cart->quantity,
+                    'order_status_id' => 1,
+                ]);
+
+                $total += $cart->product->harga * $cart->quantity;
+            }
+
+            // Updating order total
+            $order->total = $total;
+            $order->save();
+
+            // Deleting carts
+            Cart::where('user_id', auth()->user()->id)->delete();
+        }
 
         return redirect()->route('murid.order.index')->with('success', 'Pesanan berhasil dibuat');
     }

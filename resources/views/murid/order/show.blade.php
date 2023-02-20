@@ -13,15 +13,18 @@
                     <p class="text-base">Tanggal Pesan : {{ $order->created_at->format('j M Y') }}
                     <p class="text-base">Status Produk :<span
                             class="ml-2 px-2 inline-flex text-base font-semibold rounded-full
-                        @if ($order->orderStatus->id == 1) bg-gray-100 text-gray-800
-                        @elseif ($order->orderStatus->id == 2)
+                        @if ($order->orderItems->first()->orderStatus->id == 1) bg-gray-100 text-gray-800
+                        @elseif ($order->orderItems->first()->orderStatus->id == 2)
                         bg-yellow-100 text-yellow-800
-                        @elseif ($order->orderStatus->id == 3)
+                        @elseif ($order->orderItems->first()->orderStatus->id == 3)
                         bg-green-100 text-green-800
+                        @elseif ($order->orderItems->first()->orderStatus->id == 4)
+                        bg-purple-100 text-purple-800
                         @else
-                        bg-purple-100 text-purple-800 @endif
+                        bg-red-100 text-red-800
+                        @endif
                     ">
-                            {{ $order->orderStatus->status }}
+                            {{ $order->orderItems->first()->orderStatus->status }}
                         </span>
                         <hr class="my-4 border">
                     <p class="font-bold text-lg mb-2">Detail Pembeli</p>
@@ -32,7 +35,6 @@
                         </span>
                         <hr class="my-4 border">
 
-                    <p class="font-bold text-lg mb-2">Detail Pesanan</p>
                     <div>
                         @php
                             $itemsBySeller = [];
@@ -53,8 +55,11 @@
                         @endphp
 
                         @foreach ($itemsBySeller as $sellerName => $items)
-                            <p class="whitespace-nowrap text-gray-600">
-                                {{ $sellerName }}
+                    <p class="font-bold text-lg mb-2">Detail Penjual</p>
+                    <p class="whitespace-nowrap">Kantin : {{ $sellerName }}</p>
+
+                            <p class="whitespace-nowrap">
+                                Lokasi :
                                 <span
                                     class="ml-0.5 px-2 inline-flex text-xs leading-5 font-semibold rounded-full whitespace-nowrap
                                     @if ($items['products'][0]->product->user->lokasi == 'Lokasi A') bg-green-100 text-green-800
@@ -62,6 +67,9 @@
                                     {{ $items['products'][0]->product->user->lokasi }}
                                 </span>
                             </p>
+
+                            <hr class="my-4 border">
+                    <p class="font-bold text-lg mb-2">Detail Pesanan</p>
 
                             @foreach ($items['products'] as $item)
                                 <div class="grid grid-cols-2 w-full">

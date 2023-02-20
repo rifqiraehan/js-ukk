@@ -11,7 +11,7 @@ class OrderController extends Controller
     public function index()
     {
         $orders = Order::where('user_id', auth()->id())
-            ->with('orderItems.product', 'orderStatus')
+            ->with('orderItems.product', 'orderItems.orderStatus')
             ->orderByDesc('created_at')
             ->paginate(3);
 
@@ -23,7 +23,7 @@ class OrderController extends Controller
 
     public function show(Order $order)
     {
-        $order->load('orderItems.product', 'orderStatus');
+        $order->load('orderItems.product', 'orderItems.orderStatus');
 
         return view('murid.order.show', compact('order'));
     }

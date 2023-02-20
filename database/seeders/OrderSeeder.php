@@ -20,7 +20,6 @@ class OrderSeeder extends Seeder
             foreach(range(1, 3) as $j) {
                 $order = Order::create([
                     'user_id' => $i,
-                    'order_status_id' => rand(1, 4),
                     'total' => rand(5000, 30000),
                 ]);
 
@@ -37,6 +36,7 @@ class OrderSeeder extends Seeder
                         'product_id' => $product->id,
                         'quantity' => $quantity,
                         'sub_total' => $sub_total,
+                        'order_status_id' => rand(1, 5),
                     ]);
                 }
 

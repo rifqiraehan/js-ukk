@@ -22,15 +22,15 @@ class Pesanan extends Component
         ->paginate(3);
     }
 
-    public function updateStatus($orderId, $status)
-    {
-        // wire:model="status" wire:change="updateStatus({{ $order->id }}, $event.target.value)"
+    // public function updateStatus($orderId, $status)
+    // {
+    //     // wire:model="status" wire:change="updateStatus({{ $order->id }}, $event.target.value)"
 
-        $order = Order::find($orderId);
-        $order->OrderStatus()->update(['status' => $status]);
+    //     $order = Order::find($orderId);
+    //     $order->OrderStatus()->update(['status' => $status]);
 
-        $this->mount();
-    }
+    //     $this->mount();
+    // }
 
     public function render()
     {

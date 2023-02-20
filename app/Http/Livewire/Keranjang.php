@@ -24,7 +24,7 @@ class Keranjang extends Component
     {
         $cart = Cart::find($cartId);
         $product = $cart->product;
-        
+
         if ($cart->quantity < $product->stok) {
             $cart->quantity++;
             $cart->save();
