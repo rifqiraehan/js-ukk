@@ -105,7 +105,7 @@
                         @elseif ($order->orderStatus->id == 3)
                             <p class="text-lg font-bold">Pesanan Selesai?</p>
                             <div class="">
-                                <x-button icon="check" positive label="Pesanan Selesai" wire:click="pesananSelesai"/>
+                                <x-button icon="check" positive label="Selesaikan Pesanan" wire:click="pesananSelesai"/>
                             </div>
 
                         {{-- Tombol tidak memiliki aksi apapun --}}
@@ -119,7 +119,7 @@
                         @elseif ($order->orderStatus->id == 5)
                             <p class="text-lg font-bold">Status Akhir Pesanan</p>
                             <div class="">
-                                <x-button icon="x" disabled label="Pesanan Dibatalkan" />
+                                <x-button icon="x" disabled negative label="Pesanan Dibatalkan" />
                             </div>
                         @endif
                     </div>

@@ -54,6 +54,13 @@ class PesananDetail extends Component
         $this->order->save();
         $this->order->refresh();
 
+        foreach ($this->order->orderItems as $item) {
+            // $item->product->stok -= $item->quantity;
+            // $item->product->save();
+            $item->product->decrement('stok', $item->quantity);
+
+        }
+
         // $this->order->update([
         //     'order_status_id' => 4
         // ]);

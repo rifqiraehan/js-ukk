@@ -84,8 +84,7 @@
                                 <p class="text-sm text-gray-500">Pesanan selesai. Terimakasih telah menggunakan layanan
                                     kami.</p>
                             @else
-                                <p class="text-sm text-gray-500">Pesanan anda dibatalkan. Penjual tidak melakukan
-                                    konfirmasi selama 15 menit setelah pesanan anda masuk. Hal ini biasa terjadi ketika
+                                <p class="text-sm text-gray-500">Pesanan anda dibatalkan. Hal ini biasa terjadi ketika
                                     kantin sedang ramai atau alasan lainnya di luar aplikasi.</p>
                             @endif
                         </div>

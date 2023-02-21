@@ -36,7 +36,7 @@ class ProductFactory extends Factory
             'name' => $this->faker->word(),
             'detail' => $this->faker->sentence(),
             'harga' => $this->faker->randomNumber(4),
-            'stok' => $this->faker->randomNumber(2),
+            'stok' => $this->faker->randomNumber(1),
             'foto' => 'images/default/goods/'.$images[array_rand($images)],
             'user_id' => rand(2, 7),
         ];

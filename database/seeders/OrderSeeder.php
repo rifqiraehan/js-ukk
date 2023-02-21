@@ -30,7 +30,7 @@ class OrderSeeder extends Seeder
                         'product_id' => $product->id,
                         'quantity' => $quantity,
                     ]);
-                    
+
                     $carts->push($cart);
                 }
 
@@ -43,7 +43,7 @@ class OrderSeeder extends Seeder
                     $order = Order::create([
                         'user_id' => $i,
                         'total' => 0,
-                        'order_status_id' => rand(1, 5),
+                        'order_status_id' => rand(1, 3),
                     ]);
 
                     // Creating order items
