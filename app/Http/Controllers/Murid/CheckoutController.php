@@ -31,6 +31,7 @@ class CheckoutController extends Controller
             $order = \App\Models\Order::create([
                 'user_id' => auth()->user()->id,
                 'total' => 0,
+                'order_status_id' => 1,
             ]);
 
             // Creating order items
@@ -41,7 +42,6 @@ class CheckoutController extends Controller
                     'product_id' => $cart->product_id,
                     'sub_total' => $cart->product->harga * $cart->quantity,
                     'quantity' => $cart->quantity,
-                    'order_status_id' => 1,
                 ]);
 
                 $total += $cart->product->harga * $cart->quantity;

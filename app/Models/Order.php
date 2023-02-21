@@ -14,11 +14,18 @@ class Order extends Model
     protected $fillable = [
         'user_id',
         'total',
+        'order_status_id',
     ];
 
     public function OrderItems()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    // add a relationship to the OrderStatus model
+    public function OrderStatus()
+    {
+        return $this->belongsTo(OrderStatus::class);
     }
 
     //

@@ -23,3 +23,9 @@ Tugas
 - Handle ketika user akses url checkout success method get
 - buat tampilan daftar pesanan untuk penjual berserta detail pesanan, dan tombol untuk ubah status
 
+menunggu konfirmasi => konfirmasi pesanan | batalkan pesanan
+konfirmasi pesanan => pesanan siap
+pesanan siap => pesanan selesai
+pesanan selesai => tidak ada aksi
+pesanan dibatalkan => jangan tampilkan button
+

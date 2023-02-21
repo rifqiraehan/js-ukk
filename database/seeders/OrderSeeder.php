@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,33 +18,51 @@ class OrderSeeder extends Seeder
     public function run()
     {
         foreach (range(14, 20) as $i) {
-            foreach(range(1, 3) as $j) {
-                $order = Order::create([
-                    'user_id' => $i,
-                    'total' => rand(5000, 30000),
-                ]);
+            foreach (range(1, 3) as $j) {
+                $carts = collect();
 
-                $total = 0;
-
-                foreach(range(1, 3) as $k) {
+                foreach (range(1, 3) as $k) {
                     $product = Product::find(rand(1, 20));
                     $quantity = rand(1, 5);
 
-                    $sub_total = $product->harga * $quantity;
-                    $total += $sub_total;
-
-                    $order->orderItems()->create([
+                    $cart = Cart::create([
+                        'user_id' => $i,
                         'product_id' => $product->id,
                         'quantity' => $quantity,
-                        'sub_total' => $sub_total,
-                        'order_status_id' => rand(1, 5),
                     ]);
+                    
+                    $carts->push($cart);
                 }
 
-                $order->update([
-                    'total' => $total,
-                ]);
+                // Grouping carts by seller (user_id)
+                $groupedCarts = $carts->groupBy('product.user_id');
 
+                // Looping through grouped carts
+                foreach ($groupedCarts as $groupedCart) {
+                    // Creating order
+                    $order = Order::create([
+                        'user_id' => $i,
+                        'total' => 0,
+                        'order_status_id' => rand(1, 5),
+                    ]);
+
+                    // Creating order items
+                    $total = 0;
+                    foreach ($groupedCart as $cart) {
+                        $order->orderItems()->create([
+                            'order_id' => $order->id,
+                            'product_id' => $cart->product_id,
+                            'sub_total' => $cart->product->harga * $cart->quantity,
+                            'quantity' => $cart->quantity,
+                        ]);
+
+                        $total += $cart->product->harga * $cart->quantity;
+                    }
+
+                    // Updating order total
+                    $order->total = $total;
+                    $order->save();
+                }
             }
         }
     }

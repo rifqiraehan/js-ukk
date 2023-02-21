@@ -49,7 +49,9 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
+        $order->load('orderItems.product', 'orderStatus');
+
+        return view('penjual.order.show', compact('order'));
     }
 
     /**

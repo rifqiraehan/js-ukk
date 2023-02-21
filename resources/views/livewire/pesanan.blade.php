@@ -16,12 +16,8 @@
                                         Tanggal Pesan
                                     </th>
                                     <th scope="col"
-                                        class="px-2 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        class="py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Pembeli
-                                    </th>
-                                    <th scope="col"
-                                        class="px-2 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Produk
                                     </th>
                                     <th scope="col" width="200"
                                         class="py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -31,13 +27,16 @@
                                         class="px-1 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Status
                                     </th>
+                                    <th scope="col" width="200"
+                                        class="px-1 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Aksi
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @foreach ($orders as $order)
                                     <tr>
                                         <td class="text-center px-3 py-4 whitespace-nowrap text-sm text-gray-900">
-
                                             {{ $loop->iteration + $orders->firstItem() - 1 }}
                                         </td>
 
@@ -46,41 +45,59 @@
                                             {{ $order->created_at->format('H:i') }} WIB
                                         </td>
 
-                                        <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        <td class="py-4 whitespace-nowrap text-sm text-gray-900">
                                             {{ $order->user->name }} <br>
                                             <span class="text-gray-500">{{ $order->user->kelas }}
                                                 {{ $order->user->jurusan }}</span>
                                         </td>
 
-                                        <td class="px-2 py-4 whitespace-nowrap text-sm text-gray-900">
+                                        {{-- <td class="py-4 whitespace-nowrap text-sm text-gray-900">
                                             @foreach ($order->orderItems as $item)
                                                 {{ $item->product->name }} (x{{ $item->quantity }})<br>
                                             @endforeach
-                                        </td>
+                                        </td> --}}
 
                                         <td class="py-4 whitespace-nowrap text-sm text-gray-900">
                                             Rp {{ number_format($order->total, 0, '.', '.') }}
                                         </td>
 
                                         <td class="pr-8 py-4 whitespace-nowrap text-sm text-gray-900">
-                                            <select class="form-control">
-                                                <option value="Menunggu Konfirmasi"
-                                                    {{ ($order->orderStatus->status) == 'Menunggu Konfirmasi' ? 'selected' : '' }}>
-                                                    Menunggu Konfirmasi</option>
-                                                <option value="Pesanan Dikonfirmasi"
-                                                    {{ ($order->orderStatus->status) == 'Pesanan Dikonfirmasi' ? 'selected' : '' }}>
-                                                    Pesanan Dikonfirmasi</option>
-                                                <option value="Pesanan Siap"
-                                                    {{ ($order->orderStatus->status) == 'Pesanan Siap' ? 'selected' : '' }}>
-                                                    Pesanan Siap</option>
-                                                <option value="Pesanan Selesai"
-                                                    {{ ($order->orderStatus->status) == 'Pesanan Selesai' ? 'selected' : '' }}>
-                                                    Pesanan Selesai</option>
-                                                <option value="Pesanan Dibatalkan"
-                                                    {{ ($order->orderStatus->status) == 'Pesanan Dibatalkan' ? 'selected' : '' }}>
-                                                    Pesanan Dibatalkan</option>
-                                            </select>
+                                            <p class="text-base font-bold">
+                                                <span
+                                                    class="px-2 text-base font-semibold rounded-full whitespace-nowrap
+                                                @if ($order->orderStatus->id == 1) bg-gray-200 text-gray-800
+                                                @elseif ($order->orderStatus->id == 2)
+                                                bg-yellow-100 text-yellow-800
+                                                @elseif ($order->orderStatus->id == 3)
+                                                bg-green-100 text-green-800
+                                                @elseif ($order->orderStatus->id == 4)
+                                                bg-purple-100 text-purple-800
+                                                @else
+                                                bg-red-100 text-red-800 @endif
+                                            ">
+                                                    {{ $order->orderStatus->status }}
+                                                </span>
+                                            </p>
                                         </td>
+
+
+                                        <td class="pr-8 py-4 whitespace-nowrap text-sm text-gray-900">
+                                            <a href="{{ route('penjual.order.show', $order->id) }}"
+                                                class="text-base font-medium underline">
+                                                Detail
+                                            </a>
+                                        </td>
+
+                                        {{-- <td class="pr-8 py-4 whitespace-nowrap text-sm text-gray-900">
+                                            <select class="form-control">
+                                                @foreach(['Menunggu Konfirmasi', 'Pesanan Dikonfirmasi', 'Pesanan Siap', 'Pesanan Selesai', 'Pesanan Dibatalkan'] as $status)
+                                                    <option value="{{ $status }}" {{ ($order->orderStatus->status) == $status ? 'selected' : '' }}>
+                                                        {{ $status }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </td> --}}
+
 
                                         {{-- <td class="pr-8 py-4 whitespace-nowrap text-sm text-gray-900">
                                             <select class="form-control" wire:model="status" wire:change="updatedStatus($event.target.value, {{ $order->id }})">

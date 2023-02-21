@@ -21,6 +21,9 @@ return new class extends Migration
 
             $table->bigInteger('total');
 
+            $table->unsignedBigInteger('order_status_id');
+            $table->foreign('order_status_id')->references('id')->on('order_statuses')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -14,7 +14,6 @@ class OrderItem extends Model
         'product_id',
         'sub_total',
         'quantity',
-        'order_status_id',
     ];
 
     public function Order()
@@ -25,10 +24,5 @@ class OrderItem extends Model
     public function Product()
     {
         return $this->belongsTo(Product::class);
-    }
-
-    public function OrderStatus()
-    {
-        return $this->belongsTo(OrderStatus::class);
     }
 }
