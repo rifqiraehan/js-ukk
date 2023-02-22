@@ -17,7 +17,7 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        foreach (range(14, 20) as $i) {
+        foreach (range(8, 15) as $i) {
             foreach (range(1, 3) as $j) {
                 $carts = collect();
 

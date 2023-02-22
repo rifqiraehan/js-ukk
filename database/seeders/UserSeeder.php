@@ -32,17 +32,6 @@ class UserSeeder extends Seeder
         User::factory(5)->penjual()->create();
 
         User::create([
-            'name' => 'Pak John',
-            'email' => 'partner@gmail.com',
-            'username' => 'partner',
-            'email_verified_at' => now(),
-            'password' => Hash::make('secret'),
-            'role_id' => '3',
-        ]);
-
-        User::factory(5)->kurir()->create();
-
-        User::create([
             'name' => 'John Doe',
             'email' => 'murid@gmail.com',
             'username' => 'murid',
@@ -50,7 +39,7 @@ class UserSeeder extends Seeder
             'jurusan' => 'RPL 1',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
-            'role_id' => '4',
+            'role_id' => '3',
         ]);
 
         User::create([
@@ -61,7 +50,7 @@ class UserSeeder extends Seeder
             'jurusan' => 'RPL 2',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
-            'role_id' => '4',
+            'role_id' => '3',
         ]);
 
         User::create([
@@ -72,7 +61,7 @@ class UserSeeder extends Seeder
             'jurusan' => 'RPL 2',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
-            'role_id' => '4',
+            'role_id' => '3',
         ]);
 
         User::factory(5)->murid()->create();

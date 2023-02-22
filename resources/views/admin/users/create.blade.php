@@ -8,7 +8,7 @@
     <div>
         <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="post" action="{{ route('admin.users.store') }}" x-data="{role_id: 4}">
+                <form method="post" action="{{ route('admin.users.store') }}" x-data="{role_id: 3}">
                     @csrf
                     <div class="grid grid-cols-2 shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
@@ -57,9 +57,8 @@
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="role_id" class="block font-medium text-sm text-gray-700">Tambahkan Sebagai:</label>
                             <select name="role_id" id="role_id" x-model="role_id" class="form-multiselect block rounded-md shadow-sm mt-1 block w-full">
-                                <option value="4">Murid</option>
+                                <option value="3">Murid</option>
                                 <option value="2">Penjual</option>
-                                <option value="3">Partner</option>
                             </select>
                             @error('role_id')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
@@ -68,7 +67,7 @@
 
 
                         {{-- Siswa --}}
-                        <div class="px-4 py-5 bg-white sm:p-6" x-show="role_id == 4">
+                        <div class="px-4 py-5 bg-white sm:p-6" x-show="role_id == 3">
                             <label for="kelas" class="block font-medium text-sm text-gray-700">Kelas:</label>
                             <select name="kelas" id="kelas" x-model="kelas" class="form-multiselect block rounded-md shadow-sm mt-1 block w-full">
                                 <option value="X">10</option>
@@ -81,7 +80,7 @@
                             @enderror
                         </div>
 
-                        <div class="px-4 py-5 bg-white sm:p-6" x-show="role_id == 4">
+                        <div class="px-4 py-5 bg-white sm:p-6" x-show="role_id == 3">
                             <label for="jurusan" class="block font-medium text-sm text-gray-700">Jurusan</label>
                             <input type="text" name="jurusan" id="jurusan" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('jurusan', '') }}" />

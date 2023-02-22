@@ -90,7 +90,7 @@
         </div>
 
         <!-- Kelas -->
-        @if (Auth::user()->role_id == 4)
+        @if (Auth::user()->role_id == 3)
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="kelas" value="{{ __('Kelas') }}" />
                 <select id="kelas" class="mt-1 block w-full" wire:model="state.kelas" autocomplete="kelas">
@@ -104,7 +104,7 @@
        @endif
 
         <!-- Jurusan -->
-        @if (Auth::user()->role_id == 4)
+        @if (Auth::user()->role_id == 3)
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="jurusan" value="{{ __('Jurusan') }}" />
                 <x-jet-input id="jurusan" type="text" class="mt-1 block w-full" wire:model.defer="state.jurusan" autocomplete="jurusan" />
@@ -123,13 +123,6 @@
                 <x-jet-input-error for="lokasi" class="mt-2" />
             </div>
         @endif
-
-
-
-
-
-
-
     </x-slot>
 
     <x-slot name="actions">

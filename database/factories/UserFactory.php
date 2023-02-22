@@ -81,15 +81,6 @@ class UserFactory extends Factory
         });
     }
 
-    public function kurir()
-    {
-        return $this->state(function (array $attributes) {
-            return[
-                'role_id'=> '3',
-            ];
-        });
-    }
-
     public function murid()
     {
         return $this->state(function (array $attributes) {
@@ -97,7 +88,7 @@ class UserFactory extends Factory
             $jurusan = ['ANI', 'RPL 1', 'RPL 2', 'SIJA', 'TKJ', 'DPIB', 'TITL'];
 
             return[
-                'role_id'=> '4',
+                'role_id'=> '3',
                 'kelas' => $kelas[mt_rand(0,count($kelas)-1)],
                 'jurusan' => $jurusan[mt_rand(0,count($jurusan)-1)],
             ];

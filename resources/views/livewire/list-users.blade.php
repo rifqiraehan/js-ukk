@@ -11,7 +11,6 @@
                 <select wire:model="roleFilter" id="roleFilter" class="py-2 text-sm text-gray bg-gray-100 rounded-md focus:outline-none focus:bg-gray-200 focus:text-gray-700">
                     <option value="">All</option>
                     <option value="Penjual">Penjual</option>
-                    <option value="Kurir">Kurir</option>
                     <option value="Murid">Murid</option>
                 </select>
             </div>
@@ -98,11 +97,6 @@
                                         @endif
                                         @if ($user->role->name == 'Penjual')
                                         <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                            {{ $user->role->name }}
-                                        </span>
-                                        @endif
-                                        @if ($user->role->name == 'Kurir')
-                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
                                             {{ $user->role->name }}
                                         </span>
                                         @endif

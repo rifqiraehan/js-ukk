@@ -14,7 +14,7 @@ class CartSeeder extends Seeder
      */
     public function run()
     {
-        foreach (range(14, 20) as $i) {
+        foreach (range(8, 15) as $i) {
             foreach(range(1, 3) as $j) {
                 \App\Models\Cart::create([
                     'user_id' => $i,

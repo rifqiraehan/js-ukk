@@ -25,11 +25,7 @@ class CheckRole
             abort(403);
         }
 
-        if ($role == 'kurir' && auth()->user()->role_id != 3) {
-            abort(403);
-        }
-
-        if ($role == 'murid' && auth()->user()->role_id != 4) {
+        if ($role == 'murid' && auth()->user()->role_id != 3) {
             abort(403);
         }
 

@@ -6,7 +6,7 @@
 
         <x-jet-validation-errors class="mb-4" />
 
-        <form method="POST" action="{{ route('register') }}" x-data="{role_id: 4}">
+        <form method="POST" action="{{ route('register') }}" x-data="{role_id: 3}">
             @csrf
 
             <div class="grid grid-cols-2 gap-2">
@@ -30,7 +30,6 @@
                     <select name="role_id" x-model="role_id" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option value="4">Murid</option>
                         <option value="2">Penjual</option>
-                        <option value="3">Partner</option>
                     </select>
                 </div>
 
@@ -45,7 +44,7 @@
                 </div>
 
                 {{-- Siswa --}}
-                <div class="mt-2" x-show="role_id == 4">
+                <div class="mt-2" x-show="role_id == 3">
                     <x-jet-label for="kelas" value="{{ __('Kelas') }}" />
                     <select name="kelas" x-model="kelas" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
                         <option value="X">10</option>
@@ -55,7 +54,7 @@
                     </select>
                 </div>
 
-                <div class="mt-2" x-show="role_id == 4">
+                <div class="mt-2" x-show="role_id == 3">
                     <x-jet-label for="jurusan" value="{{ __('Jurusan') }}" />
                     <x-jet-input id="jurusan" class="block mt-1 w-full" type="text" :value="old('jurusan')" name="jurusan" />
                 </div>
