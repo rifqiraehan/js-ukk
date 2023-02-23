@@ -45,10 +45,6 @@ class UpdateUserRequest extends FormRequest
                     return $query->where('username', $this->username);
                 }),
             ],
-            'role_id' => [
-                'required',
-                'integer',
-            ],
             'kelas' => [
                 'string',
                 'nullable',

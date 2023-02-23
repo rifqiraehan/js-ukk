@@ -19,21 +19,7 @@ class Pesanan extends Component
 
     public function mount()
     {
-        $user = auth()->user();
-
-        $this->orders = Order::whereHas('orderItems.product', function ($query) use ($user) {
-                $query->where('user_id', $user->id);
-            })
-            ->with('user')
-            ->when($this->search, function ($query) {
-                $query->where('status', 'like', '%' . $this->search . '%')
-                      ->orWhere('name', 'like', '%' . $this->search . '%');
-            })
-            ->when($this->statusFilter, function ($query) {
-                $query->where('status', $this->statusFilter);
-            })
-            ->orderByDesc('created_at')
-            ->paginate(5);
+        $this->updatingOrders();
     }
 
     public function updatingSearch()
@@ -46,11 +32,49 @@ class Pesanan extends Component
         $this->resetPage();
     }
 
+    public function updatingOrders()
+    {
+        $user = auth()->user();
+
+        $this->orders = Order::whereHas('orderItems.product', function ($query) use ($user) {
+            $query->where('user_id', $user->id);
+        })
+            ->with('user')
+            ->when($this->search, function ($query) {
+                $query->where(function ($query) {
+                    $query->whereHas('user', function ($query) {
+                        $query->where('name', 'like', '%' . $this->search . '%');
+                    })
+                        ->orWhereHas('orderItems.product', function ($query) {
+                            $query->where('name', 'like', '%' . $this->search . '%');
+                        })
+                        ->orWhere('total', 'like', '%' . $this->search . '%')
+                        ->orWhereHas('orderItems.product', function ($query) {
+                            $query->whereHas('user', function ($query) {
+                                $query->where('name', 'like', '%' . $this->search . '%');
+                            });
+                        });
+                });
+            })
+            ->when($this->statusFilter, function ($query) {
+                $query->whereHas('orderStatus', function ($query) {
+                    $query->where('status', 'like', '%' . $this->statusFilter . '%');
+                });
+            })
+            ->orderByDesc('created_at')
+            ->paginate(5);
+    }
+
+
     public function render()
     {
+        $this->updatingOrders();
+
+        // $user = auth()->user();
+        // dd($user);
+
         return view('livewire.pesanan', [
             'orders' => $this->orders
         ]);
     }
 }
-

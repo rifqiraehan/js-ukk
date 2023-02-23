@@ -23,75 +23,21 @@ class HomeController extends Controller
         } else {
             $products = Product::paginate(8);
         }
+
+        $products = Product::where('name', '!=', null)
+            ->when($request->term, function ($query, $term) {
+                $query->where(function ($query) use ($term) {
+                    $query->where('name', 'LIKE', '%' . $term . '%')
+                          ->orWhereHas('user', function ($q) use ($term) {
+                              $q->where('name', 'LIKE', '%' . $term . '%');
+                          });
+                });
+            })
+            ->when($seller, function ($query, $seller) {
+                $query->where('user_id', $seller);
+            })
+            ->paginate(8);
+
         return view('murid.product.index', compact('products', 'users'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $product = Product::find($id);
-        $users = User::all();
-
-        return view('murid.product.show', compact('product', 'users'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

@@ -29,3 +29,23 @@ pesanan siap => pesanan selesai
 pesanan selesai => tidak ada aksi
 pesanan dibatalkan => jangan tampilkan button
 
+=============== TUGAS =========================
+
+- Laporan: Penjual dan Invoice Pembeli
+- Filter dan searching pesanan pada Pembeli ✔
+- Searching produk pada pembeli ✔
+
+<!--
+- ERD ✔
+- DFD
+- Usecase
+- Ppt
+
+- Data Seeder
+- Title
+- Memisahkan tampilan utama pembeli
+-->
+
+Error:
+- Tidak bisa update user pada halaman admin ✔
+- Layout status saat mobile-view ✔

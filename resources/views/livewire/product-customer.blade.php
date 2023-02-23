@@ -1,4 +1,4 @@
-<x-murid-layout>
+<div>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Daftar Produk') }}
@@ -14,7 +14,6 @@
             <div class="flex-1 pr-4"></div>
             <div>
                 <!-- Searching -->
-                <form action="{{ route('murid.product.index') }}" method="GET">
                 <div class="relative text-gray-700 focus-within:text-gray-600 mr-20">
                     <div class="relative md:w-1/3">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-2">
@@ -25,14 +24,13 @@
                                 </svg>
                             </button>
                         </span>
-                        <input name="term" type="search"
+                        <input wire:model="search" type="search"
                             class="py-2 text-sm text-gray
                     bg-gray-100 rounded-md pl-10 focus:outline-none
                     focus:bg-gray-200 focus:text-gray-700"
                             placeholder="{{ __('Search...') }}" autocomplete="off">
                     </div>
                 </div>
-                </form>
             </div>
         </div>
         <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
@@ -68,4 +66,4 @@
             {{ $products->links() }}
         </div>
     </section>
-</x-murid-layout>
+</div>

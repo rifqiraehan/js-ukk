@@ -86,39 +86,39 @@
                     </div>
 
                     <hr class="my-4 border">
-                    <div class="flex justify-between">
+                    <div class="flex justify-between flex-col sm:flex-row">
                         {{-- Ubah status order id menjadi 2 ketika user menekan 'Konfirmasi', dan ubah status order id menjadi 5 ketika user menekan 'Batalkan' --}}
                         @if ($order->orderStatus->id == 1)
-                            <p class="text-lg font-bold">Konfirmasi Pesanan?</p>
-                            <div class="">
+                            <p class="text-center sm:text-start text-lg font-bold whitespace-nowrap">Konfirmasi Pesanan?</p>
+                            <div class="text-center sm:text-start mt-4 sm:mt-0">
                                 <x-button icon="check" positive label="Konfirmasi" wire:click="konfirmasiPesanan" /> <x-button icon="x" negative label="Batalkan" wire:click="batalkanPesanan" />
                             </div>
 
                         {{-- Ubah status order id menjadi 3 ketika user menekan 'Pesanan Siap' --}}
                         @elseif ($order->orderStatus->id == 2)
-                            <p class="text-lg font-bold">Apakah pesanan siap?</p>
-                            <div class="">
+                            <p class="text-center sm:text-start text-lg font-bold whitespace-nowrap">Apakah pesanan siap?</p>
+                            <div class="text-center sm:text-start mt-4 sm:mt-0">
                                 <x-button icon="check" positive label="Pesanan Siap" wire:click="pesananSiap"/>
                             </div>
 
                         {{-- Ubah status order id menjadi 4 ketika user menekan 'Pesanan Selesai' --}}
                         @elseif ($order->orderStatus->id == 3)
-                            <p class="text-lg font-bold">Pesanan Selesai?</p>
-                            <div class="">
+                            <p class="text-center sm:text-start text-lg font-bold whitespace-nowrap">Pesanan Selesai?</p>
+                            <div clastext-center sm:text-start mt-4 sm:mt-0s="">
                                 <x-button icon="check" positive label="Selesaikan Pesanan" wire:click="pesananSelesai"/>
                             </div>
 
                         {{-- Tombol tidak memiliki aksi apapun --}}
                         @elseif ($order->orderStatus->id == 4)
-                            <p class="text-lg font-bold">Status Akhir Pesanan</p>
-                            <div class="">
+                            <p class="text-center sm:text-start text-lg font-bold whitespace-nowrap">Status Akhir Pesanan</p>
+                            <div class="text-center sm:text-start mt-4 sm:mt-0">
                                 <x-button icon="check" disabled positive label="Pesanan Selesai" />
                             </div>
 
                         {{-- Tombol tidak memiliki aksi apapun --}}
                         @elseif ($order->orderStatus->id == 5)
-                            <p class="text-lg font-bold">Status Akhir Pesanan</p>
-                            <div class="">
+                            <p class="text-center sm:text-start text-lg font-bold whitespace-nowrap">Status Akhir Pesanan</p>
+                            <div class="text-center sm:text-start mt-4 sm:mt-0">
                                 <x-button icon="x" disabled negative label="Pesanan Dibatalkan" />
                             </div>
                         @endif

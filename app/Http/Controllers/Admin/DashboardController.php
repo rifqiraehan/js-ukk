@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 
 class DashboardController extends Controller
 {
@@ -18,10 +19,15 @@ class DashboardController extends Controller
         $users = User::all();
 
         $sellerCount = User::whereHas('role', function($query) {
-                $query->where('name', 'penjual');
+            $query->where('name', 'penjual');
         })->count();
 
-        return view('dashboard', compact('users','sellerCount'));
+        // $totalPenghasilan = Order::where('order_status_id', 4)->sum('total');
+        $totalPenghasilan = Order::whereHas('orderItems.product', function($query) {
+            $query->where('user_id', auth()->user()->id);
+        })->where('order_status_id', 4)->sum('total');
+
+        return view('dashboard', compact('users','sellerCount', 'totalPenghasilan'));
     }
 
     /**
