@@ -40,4 +40,12 @@ class HomeController extends Controller
 
         return view('murid.product.index', compact('products', 'users'));
     }
+
+    public function show($id)
+    {
+        $product = Product::find($id);
+        $users = User::all();
+
+        return view('murid.product.show', compact('product', 'users'));
+    }
 }

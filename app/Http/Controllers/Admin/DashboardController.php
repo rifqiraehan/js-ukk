@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -16,19 +17,45 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $users = User::all();
+        $totalPenghasilan = null;
+        $pesananBelumKonfirmasi = null;
+        $waktuPesananBaru = null;
+        $sellerCount = null;
+        $waktuPenggunaBaru = null;
+        $users = null;
+        $totalProduct = null;
+        $waktuProductBaru = null;
 
-        $sellerCount = User::whereHas('role', function($query) {
-            $query->where('name', 'penjual');
-        })->count();
+        if (auth()->user()->role_id == 1) {
+            $users = User::all();
+            $sellerCount = User::whereHas('role', function ($query) {
+                $query->where('name', 'penjual');
+            })->count();
+            $waktuPenggunaBaru = User::orderBy('created_at', 'desc')->first()->created_at->diffForHumans();
 
-        // $totalPenghasilan = Order::where('order_status_id', 4)->sum('total');
-        $totalPenghasilan = Order::whereHas('orderItems.product', function($query) {
-            $query->where('user_id', auth()->user()->id);
-        })->where('order_status_id', 4)->sum('total');
+            $totalProduct = Product::count();
+            $waktuProductBaru = Product::orderBy('created_at', 'desc')->first()->created_at->diffForHumans();
+        } elseif (auth()->user()->role_id == 2) {
+            $totalPenghasilan = Order::whereHas('orderItems.product', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            })->where('order_status_id', 4)->sum('total');
 
-        return view('dashboard', compact('users','sellerCount', 'totalPenghasilan'));
+            $pesananBelumKonfirmasi = Order::whereHas('orderItems.product', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            })->where('order_status_id', 1)->count();
+
+            $waktuPesananBaru = Order::whereHas('orderItems.product', function ($query) {
+                $query->where('user_id', auth()->user()->id);
+            })->where('order_status_id', 1)->orderBy('created_at', 'desc')->first();
+
+            if ($waktuPesananBaru) {
+                $waktuPesananBaru = $waktuPesananBaru->created_at->diffForHumans();
+            }
+        }
+
+        return view('dashboard', compact('users', 'sellerCount', 'totalPenghasilan', 'pesananBelumKonfirmasi', 'waktuPesananBaru', 'waktuPenggunaBaru', 'totalProduct', 'waktuProductBaru'));
     }
+
 
     /**
      * Show the form for creating a new resource.
