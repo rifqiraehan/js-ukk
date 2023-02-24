@@ -33,17 +33,15 @@ class CartController extends Controller
             ->first();
 
         if ($cart) {
-            $cart->quantity += 1;
-            $cart->save();
+            return redirect()->back()->with('error', 'Produk sudah ada di dalam keranjang!');
         } else {
             $cart = \App\Models\Cart::create([
                 'user_id' => auth()->user()->id,
                 'product_id' => $request->product_id,
                 'quantity' => 1
             ]);
+            return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang!');
         }
-
-        return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang');
     }
 
     function destroy($id)
@@ -54,6 +52,6 @@ class CartController extends Controller
             $cart->delete();
         }
 
-        return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang');
+        // return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang!');
     }
 }

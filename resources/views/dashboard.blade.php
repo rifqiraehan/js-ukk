@@ -10,7 +10,7 @@
             <p class="font-bold text-xl">Selamat Datang, <span class=" text-gray-500">{{ Auth::user()->name }}</span></p>
             <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 @if (Auth::user()->role_id == 2)
-                    <a href="#">
+                    <a href="{{ route('penjual.laporan.index') }}">
                         <div class="flex items-start rounded-xl bg-white p-4 shadow-lg hover:transform hover:scale-105 duration-300">
                             <div class="flex h-12 w-12 items-center justify-center rounded-full border border-green-100 bg-green-50">
                                 <svg xmlns="http://www.w3.org/2000/svg"

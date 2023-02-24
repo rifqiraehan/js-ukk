@@ -29,12 +29,13 @@ Route::middleware([
 });
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::group(['middleware' => 'role:administrator', 'prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::group(['middleware' => 'role:administrator', 'as' => 'admin.'], function() {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     });
-    Route::group(['middleware' => 'role:penjual', 'prefix' => 'penjual', 'as' => 'penjual.'], function() {
+    Route::group(['middleware' => 'role:penjual', 'prefix' => 'dashboard', 'as' => 'penjual.'], function() {
         Route::resource('product', \App\Http\Controllers\Penjual\ProductController::class);
         Route::resource('order', \App\Http\Controllers\Penjual\OrderController::class);
+        Route::resource('laporan', \App\Http\Controllers\Penjual\LaporanPenjual::class);
     });
     Route::group(['middleware' => 'role:murid', 'as' => 'murid.'], function() {
         Route::resource('product', \App\Http\Controllers\Murid\HomeController::class);

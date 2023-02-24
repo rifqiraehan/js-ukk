@@ -29,16 +29,25 @@
         </div>
     @endif
 
-    <div class="bg-gray-100 mt-10">
-        <div class="mx-auto max-w-5xl justify-center pb-14 px-6 md:flex md:space-x-6 xl:px-0">
-            <div class="rounded-lg md:w-2/3">
-                @foreach ($orders as $order)
-                    <div class="mb-8 rounded-lg bg-white p-6 shadow-md">
-                        <div class="grid grid-cols-10">
-                            <p class="text-base font-bold mb-3 col-span-9">{{ $order->created_at->format('j M Y') }},
-                                {{ $order->created_at->format('H:i') }}
-                                <span
-                                    class="lg:ml-2 sm:ml-0 px-2 inline-flex text-base font-semibold rounded-full whitespace-nowrap
+    @if ($orders->isEmpty())
+        <div class="flex flex-col items-center justify-center w-full h-full mt-16">
+            <h1 class="text-2xl font-bold text-gray-700">Pesanan Belanja Kosong</h1>
+            <a href="{{ route('murid.product.index') }}"
+                class="px-6 py-2 mt-4 text-sm font-medium text-white bg-blue-500 rounded-md hover:bg-blue-600">Belanja
+                Sekarang</a>
+        </div>
+    @else
+        <div class="bg-gray-100 mt-10">
+            <div class="mx-auto max-w-5xl justify-center pb-14 px-6 md:flex md:space-x-6 xl:px-0">
+                <div class="rounded-lg md:w-2/3">
+                    @foreach ($orders as $order)
+                        <div class="mb-8 rounded-lg bg-white p-6 shadow-md">
+                            <div class="grid grid-cols-10">
+                                <p class="text-base font-bold mb-3 col-span-9">
+                                    {{ $order->created_at->format('j M Y') }},
+                                    {{ $order->created_at->format('H:i') }}
+                                    <span
+                                        class="lg:ml-2 sm:ml-0 px-2 inline-flex text-base font-semibold rounded-full whitespace-nowrap
                                 @if ($order->orderStatus->id == 1) bg-gray-100 text-gray-800
                                 @elseif ($order->orderStatus->id == 2)
                                 bg-yellow-100 text-yellow-800
@@ -49,82 +58,78 @@
                                 @else
                                 bg-red-100 text-red-800 @endif
                             ">
-                                    {{ $order->orderStatus->status }}
-                                </span>
-                            </p>
+                                        {{ $order->orderStatus->status }}
+                                    </span>
+                                </p>
 
-                            <div class="grid justify-items-end">
+                                <div class="grid justify-items-end">
+                                    @if ($order->orderStatus->id == 1)
+                                        <form action="{{ route('murid.order.destroy', $order->id) }}" method="POST"
+                                            onsubmit="return confirm('Apakah anda ingin membatalkan pesanan tersebut?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+                                                    class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M6 18L18 6M6 6l12 12" />
+                                                </svg>
+                                            </button>
+                                        </form>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="mb-2">
                                 @if ($order->orderStatus->id == 1)
-                                    <form action="{{ route('murid.order.destroy', $order->id) }}" method="POST"
-                                        onsubmit="return confirm('Apakah anda ingin membatalkan pesanan tersebut?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                stroke-width="1.5" stroke="currentColor"
-                                                class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
-                                                <path stroke-linecap="round" stroke-linejoin="round"
-                                                    d="M6 18L18 6M6 6l12 12" />
-                                            </svg>
-                                        </button>
-                                    </form>
+                                    <p class="text-sm text-gray-500">Waktu estimasi pesanan dikonfirmasi penjual adalah pukul {{ $order->created_at->addMinutes(5)->format('H:i') }} WIB.</p>
+                                @elseif($order->orderStatus->id == 2)
+                                    <p class="text-sm text-gray-500">Pesanan anda sedang disiapkan oleh penjual.</p>
+                                @elseif($order->orderStatus->id == 3)
+                                    <p class="text-sm text-gray-500">Pesanan anda siap diambil! Harap segera ambil pesanan maksimal pukul {{ $order->updated_at->addMinutes(20)->format('H:i') }} WIB.</p>
+                                @elseif ($order->orderStatus->id == 4)
+                                    <p class="text-sm text-gray-500">Pesanan selesai. Terimakasih telah menggunakan layanan kami.</p>
+                                @else
+                                    <p class="text-sm text-gray-500">Pesanan anda dibatalkan. Hal ini biasa terjadi ketika kantin sedang ramai atau alasan lainnya di luar aplikasi.</p>
                                 @endif
                             </div>
-                        </div>
-                        <div class="mb-2">
-                            @if ($order->orderStatus->id == 1)
-                                <p class="text-sm text-gray-500">Waktu estimasi pesanan dikonfirmasi penjual adalah
-                                    pukul {{ $order->created_at->addMinutes(5)->format('H:i') }} WIB.</p>
-                            @elseif($order->orderStatus->id == 2)
-                                <p class="text-sm text-gray-500">Pesanan anda sedang disiapkan oleh penjual.</p>
-                            @elseif($order->orderStatus->id == 3)
-                                <p class="text-sm text-gray-500">Pesanan anda siap diambil! Harap segera ambil pesanan
-                                    maksimal pukul {{ $order->created_at->addMinutes(25)->format('H:i') }} WIB.</p>
-                            @elseif ($order->orderStatus->id == 4)
-                                <p class="text-sm text-gray-500">Pesanan selesai. Terimakasih telah menggunakan layanan
-                                    kami.</p>
-                            @else
-                                <p class="text-sm text-gray-500">Pesanan anda dibatalkan. Hal ini biasa terjadi ketika
-                                    kantin sedang ramai atau alasan lainnya di luar aplikasi.</p>
-                            @endif
-                        </div>
-                        <hr class="mb-4">
-                        @foreach ($order->orderItems as $item)
-                            <div class="justify-between sm:flex sm:justify-start">
-                                <img src="{{ asset($item->product->foto) }}" alt="produk"
-                                    class="w-full rounded-lg sm:w-40" width="1170" height="80">
-                                <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
-                                    <div class="mt-5 sm:mt-0">
-                                        <h2 class="text-lg font-bold text-gray-900">{{ $item->product->name }}</h2>
-                                        <p class="mt-1 text-xs text-gray-500">{{ $item->product->user->name }}</p>
-                                        <p class="text-sm mt-5">{{ $item->quantity }} x Rp
-                                            {{ number_format($item->product->harga, 0, '.', '.') }}</p>
+                            <hr class="mb-4">
+                            @foreach ($order->orderItems as $item)
+                                <div class="justify-between sm:flex sm:justify-start">
+                                    <img src="{{ asset($item->product->foto) }}" alt="produk"
+                                        class="w-full rounded-lg sm:w-40" width="1170" height="80">
+                                    <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                                        <div class="mt-5 sm:mt-0">
+                                            <h2 class="text-lg font-bold text-gray-900">{{ $item->product->name }}</h2>
+                                            <p class="mt-1 text-xs text-gray-500">{{ $item->product->user->name }}</p>
+                                            <p class="text-sm mt-5">{{ $item->quantity }} x Rp
+                                                {{ number_format($item->product->harga, 0, '.', '.') }}</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-4 flex justify-between sm:space-y-2 sm:mt-0 sm:block sm:space-x-8">
+                                        <p class="text-gray-700 whitespace-nowrap grid justify-items-end">Subtotal:</p>
+                                        <p class="font-bold whitespace-nowrap grid justify-items-end">Rp
+                                            {{ number_format($item->sub_total, 0, '.', '.') }}</p>
                                     </div>
                                 </div>
-
-                                <div class="mt-4 flex justify-between sm:space-y-2 sm:mt-0 sm:block sm:space-x-8">
-                                    <p class="text-gray-700 whitespace-nowrap grid justify-items-end">Subtotal:</p>
-                                    <p class="font-bold whitespace-nowrap grid justify-items-end">Rp
-                                        {{ number_format($item->sub_total, 0, '.', '.') }}</p>
-                                </div>
+                                <hr class="my-4 border">
+                            @endforeach
+                            <div class="grid grid-cols-2">
+                                <p class="text-gray-700 whitespace-nowrap">Total Tagihan:<span
+                                        class="font-bold ml-2 whitespace-nowrap">Rp
+                                        {{ number_format($order->total, 0, '.', '.') }}</span></p>
+                                <a href="{{ route('murid.order.show', $order->id) }}">
+                                    <p class="grid text-sky-700 justify-items-end cursor-pointer">Detail</span></p>
+                                </a>
                             </div>
-                            <hr class="my-4 border">
-                        @endforeach
-                        <div class="grid grid-cols-2">
-                            <p class="text-gray-700 whitespace-nowrap">Total Tagihan:<span
-                                    class="font-bold ml-2 whitespace-nowrap">Rp
-                                    {{ number_format($order->total, 0, '.', '.') }}</span></p>
-                            <a href="{{ route('murid.order.show', $order->id) }}">
-                                <p class="grid text-sky-700 justify-items-end cursor-pointer">Detail</span></p>
-                            </a>
                         </div>
+                    @endforeach
+                    <div>
+                        {{ $orders->links() }}
                     </div>
-                @endforeach
-                <div>
-                    {{ $orders->links() }}
                 </div>
             </div>
         </div>
-    </div>
-
+    @endif
 </x-murid-layout>

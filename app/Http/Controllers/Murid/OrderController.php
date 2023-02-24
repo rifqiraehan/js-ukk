@@ -15,8 +15,7 @@ class OrderController extends Controller
             ->orderByDesc('created_at')
             ->paginate(3);
 
-        $orderItems = $orders->first()->orderItems;
-
+        // $orderItems = $orders->first()->orderItems;
         return view('murid.order.index', compact('orders'));
 
     }
