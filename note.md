@@ -31,7 +31,7 @@ pesanan dibatalkan => jangan tampilkan button
 
 =============== TUGAS =========================
 
-- Laporan: Penjual dan Invoice Pembeli
+- Laporan: Penjual dan Invoice Pembeli ✔
 - Filter dan searching pesanan pada Pembeli ✔
 - Searching produk pada pembeli ✔
 - Menambahkan footer pada penjual dan admin
