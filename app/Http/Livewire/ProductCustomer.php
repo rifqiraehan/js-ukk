@@ -12,7 +12,6 @@ class ProductCustomer extends Component
     public function mount()
     {
         $this->products = Product::paginate(8);
-        dd($this->products);
     }
 
     public function render()

@@ -73,6 +73,7 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
+                                @if ($orders->count() > 0)
                                 @foreach ($orders as $order)
                                     <tr>
                                         <td class="text-center px-3 py-4 whitespace-nowrap text-sm text-gray-900">
@@ -150,6 +151,13 @@
 
                                     </tr>
                                 @endforeach
+                                @else
+                                    <tr>
+                                        <td colspan="6" class="text-center py-4 whitespace-nowrap text-sm text-gray-900">
+                                            Tidak ada data
+                                        </td>
+                                    </tr>
+                                @endif
                             </tbody>
                         </table>
 
