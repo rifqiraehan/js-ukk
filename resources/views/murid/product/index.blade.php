@@ -36,6 +36,13 @@
             </div>
         </div>
         <div class="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            @if ($products->count() == 0)
+                <div class="col-span-4">
+                    <div class="flex flex-col items-center justify-center">
+                        <h2 class="text-xl text-gray-500">Produk yang dicari tidak ditemukan.</h2>
+                    </div>
+                </div>
+            @else
             @foreach ($products as $product)
                 <article
                     class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
@@ -62,6 +69,7 @@
                     </a>
                 </article>
             @endforeach
+            @endif
         </div>
         <div class="border-b mx-12 border-gray-300"></div>
         <div class="py-4 mx-12">

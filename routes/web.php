@@ -29,15 +29,15 @@ Route::middleware([
 });
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::group(['middleware' => 'role:administrator', 'as' => 'admin.'], function() {
+    Route::group(['middleware' => 'role:Administrator', 'as' => 'admin.'], function() {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
     });
-    Route::group(['middleware' => 'role:penjual', 'prefix' => 'dashboard', 'as' => 'penjual.'], function() {
+    Route::group(['middleware' => 'role:Penjual', 'prefix' => 'dashboard', 'as' => 'penjual.'], function() {
         Route::resource('product', \App\Http\Controllers\Penjual\ProductController::class);
         Route::resource('order', \App\Http\Controllers\Penjual\OrderController::class);
         Route::resource('laporan', \App\Http\Controllers\Penjual\LaporanPenjual::class);
     });
-    Route::group(['middleware' => 'role:murid', 'as' => 'murid.'], function() {
+    Route::group(['middleware' => 'role:Murid', 'as' => 'murid.'], function() {
         Route::resource('product', \App\Http\Controllers\Murid\HomeController::class);
 
         Route::resource('cart', \App\Http\Controllers\Murid\CartController::class)->only(['index', 'store', 'destroy']);

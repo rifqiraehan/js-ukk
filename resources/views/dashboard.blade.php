@@ -8,7 +8,7 @@
     <div class="m-8">
         <div class="flex flex-col">
             <p class="font-bold text-xl">Selamat Datang, <span class=" text-gray-500">{{ Auth::user()->name }}</span></p>
-            <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            <div class="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-8">
                 @if (Auth::user()->role_id == 2)
                     <a href="{{ route('penjual.laporan.index') }}">
                         <div class="flex items-start rounded-xl bg-white p-4 shadow-lg hover:transform hover:scale-105 duration-300">

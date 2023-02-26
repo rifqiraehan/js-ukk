@@ -18,8 +18,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-        // mengambil produk hanya jika user_id sama dengan id user saat ini
-        $products = Product::where('user_id', auth()->user()->id)->paginate(8);
+        $products = Product::query()
+            ->where('user_id', auth()->user()->id)
+            ->when(request()->term, function ($query, $term) {
+                $query->where(function ($query) use ($term) {
+                    $query->where('name', 'LIKE', '%' . $term . '%')
+                        ->orWhere('detail', 'LIKE', '%' . $term . '%')
+                        ->orWhere('harga', 'LIKE', '%' . $term . '%')
+                        ->orWhere('stok', 'LIKE', '%' . $term . '%');
+                });
+                if ($term === 'kosong') {
+                    $query->orWhere('stok', 0);
+                }
+            })
+            ->orderByRaw('stok ASC')
+            ->paginate(8);
 
         return view('penjual.product.index', compact('products'));
     }
@@ -43,9 +56,9 @@ class ProductController extends Controller
         // handle the uploaded image
         if ($request->hasFile('foto')) {
             $file = $request->file('foto');
-            $fileName = uniqid().'.'.$file->getClientOriginalExtension();
+            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('images/product'), $fileName);
-            $validated['foto'] = 'images/product/'.$fileName;
+            $validated['foto'] = 'images/product/' . $fileName;
         }
 
         // Add the user_id to the request data
@@ -81,16 +94,16 @@ class ProductController extends Controller
         $validated = $request->validated();
 
         if ($request->hasFile('foto')) {
-            if($product->foto != null) {
-                if($product->foto != 'default/product.jpeg'){
-                    File::delete(public_path() .'/' .$product->foto);
+            if ($product->foto != null) {
+                if ($product->foto != 'default/product.jpeg') {
+                    File::delete(public_path() . '/' . $product->foto);
                 }
             }
 
             $file = $request->file('foto');
-            $fileName = uniqid().'.'.$file->getClientOriginalExtension();
+            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('images/product'), $fileName);
-            $validated['foto'] = 'images/product/'.$fileName;
+            $validated['foto'] = 'images/product/' . $fileName;
         }
 
         $validated['user_id'] = Auth::id();
@@ -107,9 +120,9 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         // Delete the image
-        if($product->foto != null) {
-            if($product->foto != 'default/product.jpeg'){
-                File::delete(public_path() .'/' .$product->foto);
+        if ($product->foto != null) {
+            if ($product->foto != 'default/product.jpeg') {
+                File::delete(public_path() . '/' . $product->foto);
             }
         }
 

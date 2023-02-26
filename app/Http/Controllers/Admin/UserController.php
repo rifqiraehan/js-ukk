@@ -45,7 +45,7 @@ class UserController extends Controller
 
         $selectedKelas = $user->kelas;
         $classes = ['X', 'XI', 'XII', 'XIII'];
-        $locates = ['Lokasi A', 'Lokasi B'];
+        $locates = ['Kantin Utama', 'Kantin Utara'];
 
         $selectedLokasi = $user->lokasi;
 

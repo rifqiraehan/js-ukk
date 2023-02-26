@@ -25,7 +25,7 @@ class CartController extends Controller
         $product = \App\Models\Product::find($request->product_id);
 
         if ($product->stok < 1) {
-            return redirect()->back()->with('error', 'Maaf! Stok telah habis.');
+            return redirect()->back()->with('error', 'Maaf, stok telah habis!');
         }
 
         $cart = \App\Models\Cart::where('user_id', auth()->user()->id)

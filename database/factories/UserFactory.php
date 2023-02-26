@@ -72,7 +72,7 @@ class UserFactory extends Factory
     public function penjual()
     {
         return $this->state(function (array $attributes) {
-            $lokasiKantin = ['Lokasi A', 'Lokasi B'];
+            $lokasiKantin = ['Kantin Utama', 'Kantin Utara'];
 
             return[
                 'role_id'=> '2',

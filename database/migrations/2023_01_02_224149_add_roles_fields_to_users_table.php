@@ -18,7 +18,7 @@ class AddRolesFieldsToUsersTable extends Migration
             $table->enum('kelas',['X','XI','XII','XIII'])->nullable();
             $table->string('jurusan')->nullable();
 
-            $table->enum('lokasi',['Lokasi A','Lokasi B'])->nullable();
+            $table->enum('lokasi',['Kantin Utama','Kantin Utara'])->nullable();
         });
     }
 

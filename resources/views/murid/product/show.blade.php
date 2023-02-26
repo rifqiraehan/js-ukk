@@ -50,17 +50,18 @@
           <h1 class="text-gray-900 text-3xl title-font font-medium mb-3">{{ $product->name }}</h1>
           <h2 class="text-sm title-font text-gray-500 tracking-widest">Penjual</h2>
           <h1 class="text-gray-900 text-3xl title-font font-medium">{{ $users->firstWhere('id', $product->user_id)->name }}</h1>
-          <h1 class="text-gray-500 text-lg title-font font-medium mb-3">Kantin {{ $users->firstWhere('id', $product->user_id)->lokasi }}</h1>
+          <h1 class="text-gray-500 text-lg title-font font-medium mb-3">{{ $users->firstWhere('id', $product->user_id)->lokasi }}</h1>
           <h2 class="text-sm title-font text-gray-500 tracking-widest">Detail</h2>
           <p class="leading-relaxed">{{ $product->detail }}</p>
           <div class="flex mt-6 items-center pb-5 pt-5 border-b-2 border-t-2 border-gray-200 mb-5">
             <div class="flex">
-              {{
-                $product->updated_at != $product->created_at
-                ? 'Stok diperbarui ' . $product->updated_at->diffForHumans()
-                : 'Produk ditambahkan ' . $product->created_at->diffForHumans()
-              }}
-
+              <p>
+                {{
+                  $product->updated_at != $product->created_at
+                  ? 'Stok diperbarui ' . $product->updated_at->diffForHumans()
+                  : 'Produk ditambahkan ' . $product->created_at->diffForHumans()
+                }}.
+              </p>
             </div>
           </div>
           <div class="flex">

@@ -62,8 +62,8 @@
                                 Lokasi :
                                 <span
                                     class="ml-0.5 px-2 inline-flex text-xs leading-5 font-semibold rounded-full whitespace-nowrap
-                                    @if ($items['products'][0]->product->user->lokasi == 'Lokasi A') bg-green-100 text-green-800
-                                    @elseif($items['products'][0]->product->user->lokasi == 'Lokasi B') bg-purple-100 text-purple-800 @endif">
+                                    @if ($items['products'][0]->product->user->lokasi == 'Kantin Utama') bg-green-100 text-green-800
+                                    @elseif($items['products'][0]->product->user->lokasi == 'Kantin Utara') bg-purple-100 text-purple-800 @endif">
                                     {{ $items['products'][0]->product->user->lokasi }}
                                 </span>
                             </p>

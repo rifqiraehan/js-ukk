@@ -44,8 +44,8 @@
                         <div class="mb-8 rounded-lg bg-white p-6 shadow-md">
                             <div class="grid grid-cols-10">
                                 <p class="text-base font-bold mb-3 col-span-9">
-                                    {{ $order->created_at->format('j M Y') }},
-                                    {{ $order->created_at->format('H:i') }}
+                                    {{ $order->updated_at->format('j M Y') }},
+                                    {{ $order->updated_at->format('H:i') }}
                                     <span
                                         class="lg:ml-2 sm:ml-0 px-2 inline-flex text-base font-semibold rounded-full whitespace-nowrap
                                 @if ($order->orderStatus->id == 1) bg-gray-100 text-gray-800
@@ -86,11 +86,11 @@
                                 @elseif($order->orderStatus->id == 2)
                                     <p class="text-sm text-gray-500">Pesanan anda sedang disiapkan oleh penjual.</p>
                                 @elseif($order->orderStatus->id == 3)
-                                    <p class="text-sm text-gray-500">Pesanan anda siap diambil! Harap segera ambil pesanan maksimal pukul {{ $order->updated_at->addMinutes(20)->format('H:i') }} WIB.</p>
+                                    <p class="text-sm text-gray-500">Pesanan anda siap diambil! Harap segera ambil pesanan sebelum pukul {{ $order->updated_at->addMinutes(20)->format('H:i') }} WIB.</p>
                                 @elseif ($order->orderStatus->id == 4)
                                     <p class="text-sm text-gray-500">Pesanan selesai. Terimakasih telah menggunakan layanan kami.</p>
                                 @else
-                                    <p class="text-sm text-gray-500">Pesanan anda dibatalkan. Hal ini biasa terjadi ketika kantin sedang ramai atau alasan lainnya di luar aplikasi.</p>
+                                    <p class="text-sm text-gray-500">Pesanan anda dibatalkan. Hal ini biasa terjadi ketika kantin sedang ramai atau stok pesanan anda habis.</p>
                                 @endif
                             </div>
                             <hr class="mb-4">

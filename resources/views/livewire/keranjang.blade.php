@@ -40,26 +40,7 @@
                             </div>
 
                             <div class="flex items-center space-x-4 lg:pl-52">
-                                {{-- <form action="{{ route('murid.cart.destroy', $cart->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="flex items-center px-2 py-1 pl-0 space-x-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-trash" width="24" height="24"
-                                            viewBox="0 0 24 24" stroke-width="0.75" stroke="currentColor" fill="none"
-                                            stroke-linecap="round" stroke-linejoin="round"
-                                            class="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <path d="M4 7l16 0"></path>
-                                            <path d="M10 11l0 6"></path>
-                                            <path d="M14 11l0 6"></path>
-                                            <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
-                                            <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
-                                        </svg>
-                                    </button>
-                                </form> --}}
-
-                                <button class="flex items-center px-2 py-1 pl-0 space-x-1" wire:click="deleteCart({{ $cart->id }})">
+                                <button class="flex items-center px-2 py-1 pl-0 space-x-1" wire:loading.attr="disabled" wire:click="deleteCart({{ $cart->id }})">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         class="icon icon-tabler icon-tabler-trash" width="24" height="24"
                                         viewBox="0 0 24 24" stroke-width="0.75" stroke="currentColor" fill="none"

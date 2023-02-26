@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             'name' => 'Bu Jane',
             'email' => 'penjual@gmail.com',
             'username' => 'penjual',
-            'lokasi' => 'Lokasi A',
+            'lokasi' => 'Kantin Utama',
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
             'role_id' => '2',

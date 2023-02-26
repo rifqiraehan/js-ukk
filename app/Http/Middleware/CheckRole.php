@@ -17,15 +17,15 @@ class CheckRole
      */
     public function handle(Request $request, Closure $next, string $role)
     {
-        if ($role == 'admin' && auth()->user()->role_id != 1) {
+        if ($role == 'Administrator' && auth()->user()->role_id != 1) {
             abort(403);
         }
 
-        if ($role == 'penjual' && auth()->user()->role_id != 2) {
+        if ($role == 'Penjual' && auth()->user()->role_id != 2) {
             abort(403);
         }
 
-        if ($role == 'murid' && auth()->user()->role_id != 3) {
+        if ($role == 'Murid' && auth()->user()->role_id != 3) {
             abort(403);
         }
 

@@ -44,6 +44,8 @@ class Pesanan extends Component
                 $query->where(function ($query) {
                     $query->whereHas('user', function ($query) {
                         $query->where('name', 'like', '%' . $this->search . '%');
+                        $query->orWhere('kelas', 'like', '%' . $this->search . '%');
+                        $query->orWhere('jurusan', 'like', '%' . $this->search . '%');
                     })
                         ->orWhereHas('orderItems.product', function ($query) {
                             $query->where('name', 'like', '%' . $this->search . '%');

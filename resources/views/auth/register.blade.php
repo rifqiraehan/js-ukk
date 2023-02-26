@@ -63,8 +63,8 @@
                 <div class="mt-2" x-show="role_id == 2">
                     <x-jet-label for="lokasi" value="{{ __('Lokasi Kantin') }}" />
                     <select name="lokasi" x-model="lokasi" class="block mt-1 w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm">
-                        <option value="Lokasi A">Lokasi A</option>
-                        <option value="Lokasi B">Lokasi B</option>
+                        <option value="Kantin Utama">Kantin Utama</option>
+                        <option value="Kantin Utara">Kantin Utara</option>
                     </select>
                 </div>
             </div>

@@ -117,8 +117,8 @@
             <div class="col-span-6 sm:col-span-4">
                 <x-jet-label for="lokasi" value="{{ __('Lokasi Kantin') }}" />
                 <select id="lokasi" class="mt-1 block w-full" wire:model="state.lokasi" autocomplete="lokasi">
-                    <option value="Lokasi A">Lokasi A</option>
-                    <option value="Lokasi B">Lokasi B</option>
+                    <option value="Kantin Utama">Kantin Utama</option>
+                    <option value="Kantin Utara">Kantin Utara</option>
                 </select>
                 <x-jet-input-error for="lokasi" class="mt-2" />
             </div>

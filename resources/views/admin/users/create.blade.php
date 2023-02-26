@@ -93,8 +93,8 @@
                         <div class="px-4 py-5 bg-white sm:p-6" x-show="role_id == 2">
                             <label for="lokasi" class="block font-medium text-sm text-gray-700">Lokasi Kantin:</label>
                             <select name="lokasi" id="lokasi" x-model="lokasi" class="form-multiselect block rounded-md shadow-sm mt-1 block w-full">
-                                <option value="Lokasi A">Lokasi A</option>
-                                <option value="Lokasi B">Lokasi B</option>
+                                <option value="Kantin Utama">Kantin Utama</option>
+                                <option value="Kantin Utara">Kantin Utara</option>
                             </select>
                             @error('lokasi')
                                 <p class="text-sm text-red-600">{{ $message }}</p>

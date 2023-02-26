@@ -13,7 +13,7 @@
             @foreach ($groupedCarts as $sellerId => $carts)
             <div class="mb-8 rounded-lg bg-white p-6 shadow-md">
                 <p class="text-lg font-bold mb-3">Kantin {{ $carts->first()->product->user->name }}
-                    <span class="ml-0.5 px-2 inline-flex text-sm leading-5 font-semibold rounded-full whitespace-nowrap {{ $carts->first()->product->user->lokasi == 'Lokasi A' ? 'bg-green-100 text-green-800' : 'bg-purple-100 text-purple-800' }}">{{ $carts->first()->product->user->lokasi }}</span></p>
+                    <span class="ml-0.5 px-2 inline-flex text-sm leading-5 font-semibold rounded-full whitespace-nowrap {{ $carts->first()->product->user->lokasi == 'Kantin Utama' ? 'bg-green-100 text-green-800' : 'bg-purple-100 text-purple-800' }}">{{ $carts->first()->product->user->lokasi }}</span></p>
                     <hr class="my-4 border">
                     @foreach ($carts as $cart)
                         <div class="justify-between sm:flex sm:justify-start">

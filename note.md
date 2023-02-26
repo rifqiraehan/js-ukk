@@ -34,8 +34,8 @@ pesanan dibatalkan => jangan tampilkan button
 - Laporan: Penjual dan Invoice Pembeli ✔
 - Filter dan searching pesanan pada Pembeli ✔
 - Searching produk pada pembeli ✔
-- Menambahkan footer pada penjual dan admin
-- Mengganti nama lokasi kantin
+- Menambahkan footer pada penjual dan admin ✔
+- Mengganti nama lokasi kantin ✔
 
 <!--
 - ERD ✔
