@@ -11,8 +11,18 @@ class PenjualLayout extends Component
      *
      * @return \Illuminate\View\View
      */
+
+    public $pagetitle;
+
+    public function __construct($pagetitle='Canteen Co.')
+    {
+        $this->pagetitle = $pagetitle;
+    }
+
     public function render()
     {
-        return view('layouts.penjual');
+        return view('layouts.penjual', [
+            'pageTitle' => $this->pagetitle,
+        ]);
     }
 }

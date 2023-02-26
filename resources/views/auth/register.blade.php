@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout pagetitle="Daftar">
     <x-jet-authentication-card class="py-18">
         <x-slot name="logo">
             <x-jet-authentication-card-logo />

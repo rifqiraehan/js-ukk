@@ -11,8 +11,18 @@ class GuestLayout extends Component
      *
      * @return \Illuminate\View\View
      */
+
+    public $pagetitle;
+
+    public function __construct($pagetitle='Canteen Co.')
+    {
+        $this->pagetitle = $pagetitle;
+    }
+
     public function render()
     {
-        return view('layouts.guest');
+        return view('layouts.guest', [
+            'pageTitle' => $this->pagetitle,
+        ]);
     }
 }

@@ -11,8 +11,18 @@ class AdminLayout extends Component
      *
      * @return \Illuminate\View\View
      */
+
+    public $pagetitle;
+
+    public function __construct($pagetitle='Canteen Co.')
+    {
+        $this->pagetitle = $pagetitle;
+    }
+
     public function render()
     {
-        return view('layouts.admin');
+        return view('layouts.admin', [
+            'pageTitle' => $this->pagetitle,
+        ]);
     }
 }

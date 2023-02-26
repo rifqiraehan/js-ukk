@@ -11,8 +11,18 @@ class MuridLayout extends Component
      *
      * @return \Illuminate\View\View
      */
+
+    public $pagetitle;
+
+    public function __construct($pagetitle='Canteen Co.')
+    {
+        $this->pagetitle = $pagetitle;
+    }
+
     public function render()
     {
-        return view('layouts.murid');
+        return view('layouts.murid', [
+            'pageTitle' => $this->pagetitle,
+        ]);
     }
 }

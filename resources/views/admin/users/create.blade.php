@@ -1,4 +1,4 @@
-<x-app-layout>
+<x-app-layout pagetitle="Tambah User">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Tambah User
@@ -13,7 +13,7 @@
                     <div class="grid grid-cols-2 shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="name" class="block font-medium text-sm text-gray-700">Nama</label>
-                            <input type="text" name="name" id="name" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                            <input required type="text" name="name" id="name" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('name', '') }}" />
                             @error('name')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
@@ -22,7 +22,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="email" class="block font-medium text-sm text-gray-700">Email</label>
-                            <input type="email" name="email" id="email" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                            <input required type="email" name="email" id="email" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('email', '') }}" />
                             @error('email')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
@@ -31,7 +31,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="username" class="block font-medium text-sm text-gray-700">Username</label>
-                            <input type="text" name="username" id="username" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                            <input required type="text" name="username" id="username" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('username', '') }}" />
                             @error('username')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
@@ -40,7 +40,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="password" class="block font-medium text-sm text-gray-700">Password</label>
-                            <input type="password" name="password" id="password" class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input required type="password" name="password" id="password" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('password')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -48,7 +48,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6">
                             <label for="password_confirmation" class="block font-medium text-sm text-gray-700">Konfirmasi Password</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-input rounded-md shadow-sm mt-1 block w-full" />
+                            <input required type="password" name="password_confirmation" id="password_confirmation" class="form-input rounded-md shadow-sm mt-1 block w-full" />
                             @error('password_confirmation')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
@@ -82,7 +82,7 @@
 
                         <div class="px-4 py-5 bg-white sm:p-6" x-show="role_id == 3">
                             <label for="jurusan" class="block font-medium text-sm text-gray-700">Jurusan</label>
-                            <input type="text" name="jurusan" id="jurusan" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                            <input required type="text" name="jurusan" id="jurusan" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('jurusan', '') }}" />
                             @error('jurusan')
                                 <p class="text-sm text-red-600">{{ $message }}</p>

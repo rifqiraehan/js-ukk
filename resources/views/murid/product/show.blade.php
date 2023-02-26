@@ -1,4 +1,4 @@
-<x-murid-layout>
+<x-murid-layout pagetitle="Detail Produk">
   <section class="text-gray-700 body-font overflow-hidden bg-gray-100">
     <div class="container px-5 pb-16 pt-12 mx-auto">
       @if (session('error'))

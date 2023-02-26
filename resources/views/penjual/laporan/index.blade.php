@@ -1,4 +1,4 @@
-<x-penjual-layout>
+<x-penjual-layout pagetitle="Laporan Penjualan">
 
     <livewire:laporan-penjual />
 

@@ -11,8 +11,18 @@ class AppLayout extends Component
      *
      * @return \Illuminate\View\View
      */
+
+    public $pagetitle;
+
+    public function __construct($pagetitle='Canteen Co.')
+    {
+        $this->pagetitle = $pagetitle;
+    }
+
     public function render()
     {
-        return view('layouts.app');
+        return view('layouts.app', [
+            'pageTitle' => $this->pagetitle,
+        ]);
     }
 }

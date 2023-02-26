@@ -1,7 +1,7 @@
-<x-penjual-layout>
+<x-penjual-layout pagetitle="Detail Pesanan">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Daftar Pesanan
+            Detail Pesanan
         </h2>
     </x-slot>
 

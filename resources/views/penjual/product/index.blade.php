@@ -1,7 +1,7 @@
-<x-penjual-layout>
+<x-penjual-layout pagetitle="Daftar Produk">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Products List') }}
+            {{ __('Daftar Produk') }}
         </h2>
     </x-slot>
 
