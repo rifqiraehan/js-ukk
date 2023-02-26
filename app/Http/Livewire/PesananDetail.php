@@ -17,13 +17,34 @@ class PesananDetail extends Component
 
     public function konfirmasiPesanan()
     {
-        $this->order->order_status_id = 2;
-        $this->order->save();
-        $this->order->refresh();
+        $produkHabis = [];
+        $produkKurang = [];
 
-        // $this->order->update([
-        //     'order_status_id' => 2
-        // ]);
+        foreach ($this->order->orderItems as $item) {
+            $product = $item->product;
+            if ($product->stok == 0){
+                array_push($produkHabis, $product->name);
+            } elseif ($item->quantity > $product->stok) {
+                array_push($produkKurang, $product->name);
+            }
+        }
+
+        if(count($produkHabis) > 0 || count($produkKurang) > 0) {
+            $produkHabisStr = implode(", ", $produkHabis);
+            $produkKurangStr = implode(", ", $produkKurang);
+            $pesanError = "";
+            if(count($produkHabis) > 0) {
+                $pesanError = "Stok produk " . $produkHabisStr . " habis. ";
+            }
+            if(count($produkKurang) > 0) {
+                $pesanError .= "Jumlah yang dipesan untuk produk " . $produkKurangStr . " melebihi stok yang tersedia.";
+            }
+            return redirect()->back()->with('error', $pesanError);
+        } else {
+            $this->order->order_status_id = 2;
+            $this->order->save();
+            $this->order->refresh();
+        }
     }
 
     public function batalkanPesanan()
@@ -31,10 +52,6 @@ class PesananDetail extends Component
         $this->order->order_status_id = 5;
         $this->order->save();
         $this->order->refresh();
-
-        // $this->order->update([
-        //     'order_status_id' => 5
-        // ]);
     }
 
     public function pesananSiap()
@@ -42,10 +59,6 @@ class PesananDetail extends Component
         $this->order->order_status_id = 3;
         $this->order->save();
         $this->order->refresh();
-
-        // $this->order->update([
-        //     'order_status_id' => 3
-        // ]);
     }
 
     public function pesananSelesai()
@@ -55,15 +68,9 @@ class PesananDetail extends Component
         $this->order->refresh();
 
         foreach ($this->order->orderItems as $item) {
-            // $item->product->stok -= $item->quantity;
-            // $item->product->save();
             $item->product->decrement('stok', $item->quantity);
 
         }
-
-        // $this->order->update([
-        //     'order_status_id' => 4
-        // ]);
     }
 
 
