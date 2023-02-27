@@ -53,8 +53,12 @@
                 <div class="mt-8 flex flex-wrap justify-center gap-4">
                     @if (Route::has('login'))
                         @auth
+                            @if(auth()->user()->role->name == 'Murid')
+                            <a href="{{ url('/product') }}" class="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto">Mulai</a>
+                            @else
                             <a href="{{ url('/dashboard') }}"
                                 class="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto">Mulai</a>
+                            @endif
                         @else
                             <a href="{{ route('login') }}"
                                 class="block w-full rounded border border-blue-600 bg-blue-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-white focus:outline-none focus:ring active:text-opacity-75 sm:w-auto">Masuk</a>

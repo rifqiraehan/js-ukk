@@ -7,7 +7,7 @@
 
             <!-- Filter By Role -->
             <div class="hidden md:block relative text-gray-700 focus-within:text-gray-600 m-2">
-                <select wire:model="roleFilter" id="roleFilter" class="py-2 px-4 text-sm text-gray bg-gray-100 rounded-md focus:outline-none focus:bg-gray-200 focus:text-gray-700">
+                <select wire:model="roleFilter" id="roleFilter" class="py-2 pl-4 pl-6 text-sm text-gray bg-gray-100 rounded-md focus:outline-none focus:bg-gray-200 focus:text-gray-700">
                     <option value="">All</option>
                     <option value="Penjual">Penjual</option>
                     <option value="Murid">Murid</option>
