@@ -10,7 +10,7 @@
 
     <!-- Product List -->
     <section class="py-10 bg-gray-100">
-        <div class="mb-4 flex justify-between items-center">
+        <div class="mb-4 flex justify-between items-center sm:justify-items-center">
             <div class="flex-1 pr-4"></div>
             <div>
                 <!-- Searching -->
@@ -48,8 +48,7 @@
                     class="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
                     <a href="{{ route('murid.product.show', $product->id) }}">
                         <div class="relative flex items-end overflow-hidden rounded-xl">
-                            <img src="{{ asset($product->foto) }}" alt="{{ $product->name }}" width="800"
-                                height="450">
+                            <img src="{{ asset($product->foto) }}" alt="{{ $product->name }}" class="object-cover w-full h-40">
                         </div>
                         <div class="mt-1 p-2">
                             <h2 class="text-slate-700">{{ $product->name }}</h2>

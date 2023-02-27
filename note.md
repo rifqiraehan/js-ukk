@@ -40,14 +40,19 @@ pesanan dibatalkan => jangan tampilkan button
 <!--
 - ERD ✔
 - DFD
-- Usecase
+- Usecase ✔
 - Ppt
 
-- Data Seeder
-- Title
-- Memisahkan tampilan utama pembeli
+- Data Seeder ✔
+- Title ✔
+- Memisahkan tampilan utama pembeli ✔
 -->
 
 Error:
 - Tidak bisa update user pada halaman admin ✔
 - Layout status saat mobile-view ✔
+
+Other:
+- Admin Report
+- Responsive
+- Auth Problem

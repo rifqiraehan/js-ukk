@@ -18,17 +18,18 @@ class DatabaseSeeder extends Seeder
         $this->call([
             RoleSeeder::class,
             UserSeeder::class,
+            ProductSeeder::class,
         ]);
 
-        Product::factory(20)->create();
+        // Product::factory(20)->create();
 
-        $this->call([
-            CartSeeder::class,
-        ]);
+        // $this->call([
+        //     CartSeeder::class,
+        // ]);
 
-        $this->call([
-            OrderStatusSeeder::class,
-            OrderSeeder::class,
-        ]);
+        // $this->call([
+        //     OrderStatusSeeder::class,
+        //     OrderSeeder::class,
+        // ]);
     }
 }

@@ -1,20 +1,19 @@
 <div>
     <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
-        <div class="mb-4 flex justify-between items-center">
+        <div class="mb-4 flex justify-between items-center lg:px-0 px-6 mb-3 align-middle">
             <div class="flex-1 pr-4">
-                <a href="{{ route('admin.users.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Tambah User</a>
+                <a href="{{ route('admin.users.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded whitespace-nowrap">Tambah User</a>
             </div>
             {{-- <button id="generate-pdf" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Print</button> --}}
 
             <!-- Filter By Role -->
             <div class="hidden md:block relative text-gray-700 focus-within:text-gray-600 m-2">
-                <select wire:model="roleFilter" id="roleFilter" class="py-2 text-sm text-gray bg-gray-100 rounded-md focus:outline-none focus:bg-gray-200 focus:text-gray-700">
+                <select wire:model="roleFilter" id="roleFilter" class="py-2 px-4 text-sm text-gray bg-gray-100 rounded-md focus:outline-none focus:bg-gray-200 focus:text-gray-700">
                     <option value="">All</option>
                     <option value="Penjual">Penjual</option>
                     <option value="Murid">Murid</option>
                 </select>
             </div>
-
 
             <div>
                 <!-- Searching -->
@@ -28,10 +27,11 @@
                                 </svg>
                             </button>
                         </span>
+
                         <input wire:model="search" type="search"
                         class="py-2 text-sm text-gray
                         bg-gray-100 rounded-md pl-10 focus:outline-none
-                        focus:bg-gray-200 focus:text-gray-700"
+                        focus:bg-gray-200 focus:text-gray-700 lg:w-auto search"
                         placeholder="{{ __('Search...') }}"
                         autocomplete="off">
                     </div>

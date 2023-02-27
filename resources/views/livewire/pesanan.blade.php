@@ -1,44 +1,39 @@
 <div>
     <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
-        <div class="mb-4 flex justify-between items-center">
-            <div class="flex-1 pr-4"></div>
-            {{-- <button id="generate-pdf" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Print</button> --}}
 
-            <!-- Filter By Status -->
-                <div class="relative text-gray-700 focus-within:text-gray-600 m-2">
-                    <select wire:model="statusFilter" id="statusFilter" class="py-2 text-sm text-gray bg-gray-100 rounded-md focus:outline-none focus:bg-gray-200 focus:text-gray-700">
-                        <option value="">All</option>
-                        <option value="Menunggu Konfirmasi">Belum Dikonfirmasi</option>
-                        <option value="Pesanan Dikonfirmasi">Pesanan Dikonfirmasi</option>
-                        <option value="Pesanan Siap">Pesanan Siap</option>
-                        <option value="Pesanan Selesai">Pesanan Selesai</option>
-                        <option value="Pesanan Dibatalkan">Pesanan Dibatalkan</option>
-                    </select>
+        {{-- New --}}
+        <div class="flex justify-between lg:px-0 px-6 mb-3 gap-6 align-middle">
+            <div class="relative text-gray-700 focus-within:text-gray-600">
+                <select wire:model="statusFilter" id="statusFilter" class="py-2 px-4 text-sm text-gray bg-gray-100 rounded-md focus:outline-none focus:bg-gray-200 focus:text-gray-700">
+                    <option value="">All</option>
+                    <option value="Menunggu Konfirmasi">Belum Dikonfirmasi</option>
+                    <option value="Pesanan Dikonfirmasi">Pesanan Dikonfirmasi</option>
+                    <option value="Pesanan Siap">Pesanan Siap</option>
+                    <option value="Pesanan Selesai">Pesanan Selesai</option>
+                    <option value="Pesanan Dibatalkan">Pesanan Dibatalkan</option>
+                </select>
+            </div>
+            <div class="relative text-gray-700 focus-within:text-gray-600">
+                <div class="relative">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                        <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                            stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
+                            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </button>
+                    </span>
+                    <input wire:model="search" type="search"
+                    class="py-2 text-sm text-gray
+                    bg-gray-100 rounded-md pl-10 focus:outline-none
+                    focus:bg-gray-200 focus:text-gray-700 search"
+                    placeholder="{{ __('Search...') }}"
+                    autocomplete="off">
                 </div>
-
-
-                <div>
-                    <!-- Searching -->
-                    <div class="relative text-gray-700 focus-within:text-gray-600">
-                        <div class="relative md:w-1/3">
-                            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                                <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
-                                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" viewBox="0 0 24 24" class="w-6 h-6">
-                                    <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                                    </svg>
-                                </button>
-                            </span>
-                            <input wire:model="search" type="search"
-                            class="py-2 text-sm text-gray
-                            bg-gray-100 rounded-md pl-10 focus:outline-none
-                            focus:bg-gray-200 focus:text-gray-700"
-                            placeholder="{{ __('Search...') }}"
-                            autocomplete="off">
-                        </div>
-                    </div>
-                </div>
+            </div>
         </div>
+
+
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">

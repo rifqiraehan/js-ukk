@@ -9,3 +9,9 @@
         margin: 0;
     }
 }
+
+@layer components {
+    .search {
+        @apply w-full max-w-sm;
+    }
+}
