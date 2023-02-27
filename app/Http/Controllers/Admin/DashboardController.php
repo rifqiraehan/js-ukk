@@ -25,6 +25,15 @@ class DashboardController extends Controller
         $users = null;
         $totalProduct = null;
         $waktuProductBaru = null;
+        $totalMurid = null;
+        $totalPenjual = null;
+
+        $totalPenghasilanSeluruhPenjual = null;
+        $terakhirPemesananSelesai = null;
+        $totalUser = null;
+        $terakhirPenjualTerdaftar = null;
+        $terakhirMuridTerdaftar = null;
+        $rataRataHargaProduk = null;
 
         if (auth()->user()->role_id == 1) {
             $users = User::all();
@@ -32,9 +41,28 @@ class DashboardController extends Controller
                 $query->where('name', 'penjual');
             })->count();
             $waktuPenggunaBaru = User::orderBy('created_at', 'desc')->first()->created_at->diffForHumans();
+            $totalUser = User::whereHas('role', function ($query) {
+                $query->where('name', '!=', 'Administrator');
+            })->count();
 
             $totalProduct = Product::count();
             $waktuProductBaru = Product::orderBy('created_at', 'desc')->first()->created_at->diffForHumans();
+            $totalPenghasilanSeluruhPenjual = Order::where('order_status_id', 4)->sum('total');
+            $terakhirPemesananSelesai = Order::where('order_status_id', 4)->orderBy('updated_at', 'desc')->first()->updated_at->diffForHumans();
+            $totalMurid = User::whereHas('role', function ($query) {
+                $query->where('name', 'Murid');
+            })->count();
+            $totalPenjual = User::whereHas('role', function ($query) {
+                $query->where('name', 'Penjual');
+            })->count();
+            $terakhirPenjualTerdaftar = User::whereHas('role', function ($query) {
+                $query->where('id', 2);
+            })->orderBy('created_at', 'desc')->first()->created_at->diffForHumans();
+            $terakhirMuridTerdaftar = User::whereHas('role', function ($query) {
+                $query->where('id', 3);
+            })->orderBy('created_at', 'desc')->first()->created_at->diffForHumans();
+            $rataRataHargaProduk = Product::avg('harga');
+
         } elseif (auth()->user()->role_id == 2) {
             $totalPenghasilan = Order::whereHas('orderItems.product', function ($query) {
                 $query->where('user_id', auth()->user()->id);
@@ -53,7 +81,7 @@ class DashboardController extends Controller
             }
         }
 
-        return view('dashboard', compact('users', 'sellerCount', 'totalPenghasilan', 'pesananBelumKonfirmasi', 'waktuPesananBaru', 'waktuPenggunaBaru', 'totalProduct', 'waktuProductBaru'));
+        return view('dashboard', compact('users', 'sellerCount', 'totalPenghasilan', 'pesananBelumKonfirmasi', 'waktuPesananBaru', 'waktuPenggunaBaru', 'totalProduct', 'waktuProductBaru', 'totalPenghasilanSeluruhPenjual', 'terakhirPemesananSelesai', 'totalMurid', 'totalPenjual', 'totalUser', 'terakhirPenjualTerdaftar', 'terakhirMuridTerdaftar', 'rataRataHargaProduk'));
     }
 
 

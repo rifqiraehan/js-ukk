@@ -1,4 +1,12 @@
-<x-app-layout pagetitle="Detail User">
+<style>
+    @media print {
+        .no-print {
+            display: none;
+        }
+    }
+</style>
+
+<x-admin-layout pagetitle="Detail User">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Detail Informasi <strong>{{ $user->name }}</strong>
@@ -11,7 +19,7 @@
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                         <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                            <table class="min-w-full divide-y divide-gray-200 w-full" x-data="{role_id: 3}">
+                            <table class="min-w-full divide-y divide-gray-200 w-full">
                                 <tr class="border-b">
                                     <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         ID
@@ -108,9 +116,14 @@
                     </div>
                 </div>
             </div>
-            <div class="block mt-8">
+
+            @if($user->role_id == 2)
+                <livewire:laporan-admin :clickedUser="$user" />
+            @endif
+
+            <div class="block mt-8 no-print">
                 <a href="{{ route('admin.users.index') }}" class="bg-gray-200 hover:bg-gray-300 text-black font-bold py-2 px-4 rounded">Kembali</a>
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-admin-layout>

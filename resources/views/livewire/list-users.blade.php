@@ -4,7 +4,6 @@
             <div class="flex-1 pr-4">
                 <a href="{{ route('admin.users.create') }}" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded whitespace-nowrap">Tambah User</a>
             </div>
-            {{-- <button id="generate-pdf" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Print</button> --}}
 
             <!-- Filter By Role -->
             <div class="hidden md:block relative text-gray-700 focus-within:text-gray-600 m-2">

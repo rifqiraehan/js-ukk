@@ -1,4 +1,4 @@
-<x-app-layout pagetitle="Tambah User">
+<x-admin-layout pagetitle="Tambah User">
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Tambah User
@@ -117,4 +117,4 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-admin-layout>

@@ -103,7 +103,7 @@
                             </div>
 
                             <div class="ml-4">
-                                    <h2 class="font-semibold">{{ $sellerCount }} Pengguna terdaftar</h2>
+                                    <h2 class="font-semibold">{{ $totalUser }} Pengguna terdaftar</h2>
                                     <p class="mt-2 text-sm text-gray-500">Terakhir terdaftar {{ $waktuPenggunaBaru }}</p>
                             </div>
                         </div>
@@ -127,9 +127,74 @@
 
                         <div class="ml-4">
                                 <h2 class="font-semibold">{{ $totalProduct }} Produk terdaftar</h2>
-                                <p class="mt-2 text-sm text-gray-500">Terakhir terdaftar {{ $waktuProductBaru }}</p>
+                                <p class="mt-2 text-sm text-gray-500">Terakhir ditambahkan {{ $waktuProductBaru }}</p>
                         </div>
                     </div>
+                    <div class="flex items-start rounded-xl bg-white p-4 shadow-lg hover:transform hover:scale-105 duration-300">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-full border border-green-100 bg-green-50">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-6 w-6 text-green-400 icon icon-tabler icon-tabler-wallet" width="24"
+                                    height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path
+                                        d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12">
+                                    </path>
+                                    <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4"></path>
+                                </svg>
+                        </div>
+
+                        <div class="ml-4">
+                                <h2 class="font-semibold">Rp {{ number_format($totalPenghasilanSeluruhPenjual, 0, '.', '.') }} Total penjualan</h2>
+                                <p class="mt-2 text-sm text-gray-500">Terakhir pesanan selesai {{ $terakhirPemesananSelesai }}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start rounded-xl bg-white p-4 shadow-lg hover:transform hover:scale-105 duration-300">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-full border border-purple-100 bg-purple-100">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="text-purple-400 icon icon-tabler icon-tabler-school" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M22 9l-10 -4l-10 4l10 4l10 -4v6"></path>
+                                <path d="M6 10.6v5.4a6 3 0 0 0 12 0v-5.4"></path>
+                             </svg>
+                        </div>
+
+                        <div class="ml-4">
+                                <h2 class="font-semibold">{{ $totalMurid }} Murid terdaftar</h2>
+                                <p class="mt-2 text-sm text-gray-500">Terakhir terdaftar {{ $terakhirMuridTerdaftar }}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start rounded-xl bg-white p-4 shadow-lg hover:transform hover:scale-105 duration-300">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-full border border-fuchsia-100 bg-fuchsia-100">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="text-fuchsia-400 icon icon-tabler icon-tabler-chef-hat" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path d="M12 3c1.918 0 3.52 1.35 3.91 3.151a4 4 0 0 1 2.09 7.723l0 7.126h-12v-7.126a4 4 0 1 1 2.092 -7.723a4 4 0 0 1 3.908 -3.151z"></path>
+                                <path d="M6.161 17.009l11.839 -.009"></path>
+                             </svg>
+                        </div>
+
+                        <div class="ml-4">
+                                <h2 class="font-semibold">{{ $totalPenjual }} Penjual Terdaftar</h2>
+                                <p class="mt-2 text-sm text-gray-500">Terakhir terdaftar {{ $terakhirPenjualTerdaftar }}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start rounded-xl bg-white p-4 shadow-lg hover:transform hover:scale-105 duration-300">
+                        <div class="flex h-12 w-12 items-center justify-center rounded-full border border-rose-100 bg-rose-50">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="text-rose-400 icon icon-tabler icon-tabler-cup" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M5 11h14v-3h-14z"></path>
+                                    <path d="M17.5 11l-1.5 10h-8l-1.5 -10"></path>
+                                    <path d="M6 8v-1a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v1"></path>
+                                    <path d="M15 5v-2"></path>
+                                 </svg>
+                        </div>
+
+                        <div class="ml-4">
+                                <h2 class="font-semibold">Rp {{ number_format($rataRataHargaProduk, 0, '.', '.') }} Rata-rata harga produk</h2>
+                                <p class="mt-2 text-sm text-gray-500">Berdasarkan {{ $totalProduct }} produk terdaftar</p>
+                        </div>
+                    </div>
+
+
                 @endif
 
 
