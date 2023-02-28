@@ -56,6 +56,11 @@ class StoreProductRequest extends FormRequest
                 'integer',
                 'exists:users,id'
             ],
+            'product_category_id' => [
+                'required',
+                'integer',
+                'exists:product_categories,id'
+            ],
         ];
     }
 

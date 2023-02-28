@@ -36,6 +36,10 @@
                         <x-jet-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
                             {{ __('Users') }}
                         </x-jet-nav-link>
+
+                        <x-jet-nav-link href="{{ route('admin.categories.index') }}" :active="request()->routeIs('admin.categories.index')">
+                            {{ __('Categories') }}
+                        </x-jet-nav-link>
                         @endif
 
                         @can('manage-products')
@@ -208,6 +212,10 @@
                     @can('manage-users')
                         <x-jet-responsive-nav-link href="{{ route('admin.users.index') }}" :active="request()->routeIs('admin.users.index')">
                             {{ __('Users') }}
+                        </x-jet-responsive-nav-link>
+
+                        <x-jet-responsive-nav-link href="{{ route('admin.categories.index') }}" :active="request()->routeIs('admin.categories.index')">
+                            {{ __('Categories') }}
                         </x-jet-responsive-nav-link>
                         @endif
 

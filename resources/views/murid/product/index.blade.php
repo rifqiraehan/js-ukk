@@ -51,10 +51,13 @@
                             <img src="{{ asset($product->foto) }}" alt="{{ $product->name }}" class="object-cover w-full h-40">
                         </div>
                         <div class="mt-1 p-2">
-                            <h2 class="text-slate-700">{{ $product->name }}</h2>
+                            <h2 class="text-slate-700">{{ $product->name }}  <span class="justify-start px-2 inline-flex text-sm font-semibold rounded-full whitespace-nowrap bg-green-100 text-green-800">
+                                {{ $product->productCategory->name }}
+                            </span></h2>
 
                             <a class="text-sm text-slate-500 hover:text-slate-700"
-                                href="{{ route('murid.product.index', ['penjual' => $users->firstWhere('id', $product->user_id)->id]) }}">{{ $users->firstWhere('id', $product->user_id)->name }}</a>
+                                href="{{ route('murid.product.index', ['penjual' => $users->firstWhere('id', $product->user_id)->id]) }}">{{ $users->firstWhere('id', $product->user_id)->name }}
+                            </a>
 
                             <p class="mt-2 text-sm text-slate-400">Stok: {{ $product->stok }}</p>
 

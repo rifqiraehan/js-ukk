@@ -22,7 +22,8 @@ class ProductSeeder extends Seeder
             'harga' => '8000',
             'stok' => '10',
             'foto' => 'images\data-real\Aris 123\ice-cream.jpg',
-            'user_id' => '2'
+            'user_id' => '2',
+            'product_category_id' => '3',
         ]);
 
         Product::create([
@@ -31,7 +32,8 @@ class ProductSeeder extends Seeder
             'harga' => '5000',
             'stok' => '5',
             'foto' => 'images\data-real\Aris 123\mie-instant.jpg',
-            'user_id' => '2'
+            'user_id' => '2',
+            'product_category_id' => '2',
         ]);
 
         Product::create([
@@ -40,7 +42,8 @@ class ProductSeeder extends Seeder
             'harga' => '9000',
             'stok' => '3',
             'foto' => 'images\data-real\Aris 123\pop-mie.jpg',
-            'user_id' => '2'
+            'user_id' => '2',
+            'product_category_id' => '2',
         ]);
 
         // Cak Man
@@ -50,7 +53,8 @@ class ProductSeeder extends Seeder
             'harga' => '6000',
             'stok' => '11',
             'foto' => 'images\data-real\Cak Man\es-buah.jpg',
-            'user_id' => '3'
+            'user_id' => '3',
+            'product_category_id' => '1',
         ]);
 
         Product::create([
@@ -59,7 +63,8 @@ class ProductSeeder extends Seeder
             'harga' => '4000',
             'stok' => '12',
             'foto' => 'images\data-real\Cak Man\es-teh.jpg',
-            'user_id' => '3'
+            'user_id' => '3',
+            'product_category_id' => '1',
         ]);
 
         Product::create([
@@ -68,7 +73,8 @@ class ProductSeeder extends Seeder
             'harga' => '700',
             'stok' => '13',
             'foto' => 'images\data-real\Cak Man\soda.jpg',
-            'user_id' => '3'
+            'user_id' => '3',
+            'product_category_id' => '1',
         ]);
 
         // Bu As
@@ -78,7 +84,8 @@ class ProductSeeder extends Seeder
             'harga' => '7000',
             'stok' => '11',
             'foto' => 'images\data-real\Bu As\es-teh-lemon.jpg',
-            'user_id' => '4'
+            'user_id' => '4',
+            'product_category_id' => '1',
         ]);
 
         Product::create([
@@ -87,7 +94,8 @@ class ProductSeeder extends Seeder
             'harga' => '9000',
             'stok' => '13',
             'foto' => 'images\data-real\Bu As\gado-gado.jpg',
-            'user_id' => '4'
+            'user_id' => '4',
+            'product_category_id' => '2',
         ]);
 
         Product::create([
@@ -96,7 +104,8 @@ class ProductSeeder extends Seeder
             'harga' => '10000',
             'stok' => '23',
             'foto' => 'images\data-real\Bu As\nasi-goreng.jpg',
-            'user_id' => '4'
+            'user_id' => '4',
+            'product_category_id' => '2',
         ]);
 
         // Bu Wiwik
@@ -106,7 +115,8 @@ class ProductSeeder extends Seeder
             'harga' => '4000',
             'stok' => '12',
             'foto' => 'images\data-real\Bu Wiwik\es-cincau.jpg',
-            'user_id' => '5'
+            'user_id' => '5',
+            'product_category_id' => '1',
         ]);
 
         Product::create([
@@ -115,7 +125,8 @@ class ProductSeeder extends Seeder
             'harga' => '5000',
             'stok' => '3',
             'foto' => 'images\data-real\Bu Wiwik\es-milo.jpg',
-            'user_id' => '5'
+            'user_id' => '5',
+            'product_category_id' => '1',
         ]);
 
         Product::create([
@@ -124,7 +135,8 @@ class ProductSeeder extends Seeder
             'harga' => '2000',
             'stok' => '23',
             'foto' => 'images\data-real\Bu Wiwik\gorengan.jpg',
-            'user_id' => '5'
+            'user_id' => '5',
+            'product_category_id' => '4',
         ]);
 
         // Mbak Tina
@@ -134,7 +146,8 @@ class ProductSeeder extends Seeder
             'harga' => '5000',
             'stok' => '13',
             'foto' => 'images\data-real\Mbak Tina\kopi.jpg',
-            'user_id' => '6'
+            'user_id' => '6',
+            'product_category_id' => '1',
         ]);
 
         Product::create([
@@ -143,7 +156,8 @@ class ProductSeeder extends Seeder
             'harga' => '9000',
             'stok' => '11',
             'foto' => 'images\data-real\Mbak Tina\nasi-campur.jpg',
-            'user_id' => '6'
+            'user_id' => '6',
+            'product_category_id' => '2',
         ]);
 
         Product::create([
@@ -152,7 +166,8 @@ class ProductSeeder extends Seeder
             'harga' => '8000',
             'stok' => '5',
             'foto' => 'images\data-real\Mbak Tina\pecel.jpg',
-            'user_id' => '6'
+            'user_id' => '6',
+            'product_category_id' => '4',
         ]);
 
         // Bakso Bu Suharti
@@ -162,7 +177,8 @@ class ProductSeeder extends Seeder
             'harga' => '8000',
             'stok' => '29',
             'foto' => 'images\data-real\Bakso Bu Suharti\bakso.jpg',
-            'user_id' => '7'
+            'user_id' => '7',
+            'product_category_id' => '2',
         ]);
 
         Product::create([
@@ -171,7 +187,8 @@ class ProductSeeder extends Seeder
             'harga' => '4000',
             'stok' => '15',
             'foto' => 'images\data-real\Bakso Bu Suharti\es-buah.jpg',
-            'user_id' => '7'
+            'user_id' => '7',
+            'product_category_id' => '1',
         ]);
 
         Product::create([
@@ -180,7 +197,8 @@ class ProductSeeder extends Seeder
             'harga' => '3000',
             'stok' => '5',
             'foto' => 'images\data-real\Bakso Bu Suharti\es-teh.jpg',
-            'user_id' => '7'
+            'user_id' => '7',
+            'product_category_id' => '1',
         ]);
 
         // Mas Rahardian
@@ -190,7 +208,8 @@ class ProductSeeder extends Seeder
             'harga' => '7000',
             'stok' => '15',
             'foto' => 'images\data-real\Mas Rahardian\bakso.jpg',
-            'user_id' => '8'
+            'user_id' => '8',
+            'product_category_id' => '2',
         ]);
 
         Product::create([
@@ -199,7 +218,8 @@ class ProductSeeder extends Seeder
             'harga' => '5000',
             'stok' => '15',
             'foto' => 'images\data-real\Mas Rahardian\mie-ayam.jpg',
-            'user_id' => '8'
+            'user_id' => '8',
+            'product_category_id' => '2',
         ]);
 
         // Sowan Pak De
@@ -209,7 +229,8 @@ class ProductSeeder extends Seeder
             'harga' => '6000',
             'stok' => '15',
             'foto' => 'images\data-real\Sowan Pak De\ayam-goreng.jpg',
-            'user_id' => '9'
+            'user_id' => '9',
+            'product_category_id' => '2',
         ]);
 
         Product::create([
@@ -218,7 +239,8 @@ class ProductSeeder extends Seeder
             'harga' => '3000',
             'stok' => '5',
             'foto' => 'images\data-real\Sowan Pak De\bakso.jpg',
-            'user_id' => '9'
+            'user_id' => '9',
+            'product_category_id' => '2',
         ]);
 
         Product::create([
@@ -227,7 +249,8 @@ class ProductSeeder extends Seeder
             'harga' => '3000',
             'stok' => '5',
             'foto' => 'images\data-real\Sowan Pak De\bakwan.jpg',
-            'user_id' => '9'
+            'user_id' => '9',
+            'product_category_id' => '2',
         ]);
 
         // Product::factory(20)->create();

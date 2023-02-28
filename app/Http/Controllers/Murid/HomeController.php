@@ -30,6 +30,9 @@ class HomeController extends Controller
                     $query->where('name', 'LIKE', '%' . $term . '%')
                           ->orWhereHas('user', function ($q) use ($term) {
                               $q->where('name', 'LIKE', '%' . $term . '%');
+                          })
+                          ->orWhereHas('productCategory', function ($q) use ($term) {
+                              $q->where('name', 'LIKE', '%' . $term . '%');
                           });
                 });
             })
@@ -37,6 +40,8 @@ class HomeController extends Controller
                 $query->where('user_id', $seller);
             })
             ->paginate(8);
+
+
 
         return view('murid.product.index', compact('products', 'users'));
     }

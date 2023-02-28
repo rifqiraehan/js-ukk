@@ -70,7 +70,20 @@
                         </div>
 
                         <div class="px-4 py-5 bg-white sm:p-6">
+                            <label for="product_category_id" class="block font-medium text-sm text-gray-700">Kategori</label>
+                            <select name="product_category_id" id="product_category_id" class="form-select rounded-md shadow-sm mt-1 block w-full">
+                                <option value="">-- Pilih Kategori --</option>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}" {{ old('product_category_id', $product->product_category_id) == $category->id ? 'selected' : '' }}>
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('product_category_id')
+                                <p class="text-sm text-red-600">{{ $message }}</p>
+                            @enderror
                         </div>
+
                         <div class="px-4 py-5 bg-white sm:p-6">
                         </div>
 

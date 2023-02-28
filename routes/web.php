@@ -31,6 +31,7 @@ Route::middleware([
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:Administrator', 'as' => 'admin.'], function() {
         Route::resource('users', \App\Http\Controllers\Admin\UserController::class);
+        Route::resource('categories', \App\Http\Controllers\Admin\CategoryProductController::class);
     });
     Route::group(['middleware' => 'role:Penjual', 'prefix' => 'dashboard', 'as' => 'penjual.'], function() {
         Route::resource('product', \App\Http\Controllers\Penjual\ProductController::class);

@@ -17,11 +17,12 @@ class Product extends Model
         'stok',
         'foto',
         'user_id',
+        'product_category_id',
     ];
 
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     function carts()
@@ -32,5 +33,10 @@ class Product extends Model
     function orderItems()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function productCategory()
+    {
+        return $this->belongsTo(ProductCategory::class);
     }
 }

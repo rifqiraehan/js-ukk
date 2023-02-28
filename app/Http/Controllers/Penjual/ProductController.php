@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
+use App\Models\ProductCategory;
 
 class ProductController extends Controller
 {
@@ -25,7 +26,10 @@ class ProductController extends Controller
                     $query->where('name', 'LIKE', '%' . $term . '%')
                         ->orWhere('detail', 'LIKE', '%' . $term . '%')
                         ->orWhere('harga', 'LIKE', '%' . $term . '%')
-                        ->orWhere('stok', 'LIKE', '%' . $term . '%');
+                        ->orWhere('stok', 'LIKE', '%' . $term . '%')
+                        ->orWhereHas('productCategory', function ($q) use ($term) {
+                            $q->where('name', 'LIKE', '%' . $term . '%');
+                        });
                 });
                 if ($term === 'kosong') {
                     $query->orWhere('stok', 0);
@@ -40,9 +44,12 @@ class ProductController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Product $product)
     {
-        return view('penjual.product.create');
+        $products = Product::all();
+        $categories = ProductCategory::all();
+        $selectedCategoryId = $product->product_category_id;
+        return view('penjual.product.create', compact('product', 'products', 'categories', 'selectedCategoryId'));
     }
 
     /**
@@ -83,7 +90,11 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         // dd(public_path() .'/' .$product->foto);
-        return view('penjual.product.edit', compact('product'));
+
+        $products = Product::all();
+        $categories = ProductCategory::all();
+        $selectedCategoryId = $product->product_category_id;
+        return view('penjual.product.edit', compact('product', 'products', 'categories', 'selectedCategoryId'));
     }
 
     /**

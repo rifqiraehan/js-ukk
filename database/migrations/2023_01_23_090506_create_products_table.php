@@ -23,6 +23,10 @@ return new class extends Migration
             $table->string('foto')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('product_category_id');
+            $table->foreign('product_category_id')->references('id')->on('product_categories');
+            
             $table->timestamps();
         });
     }
