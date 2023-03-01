@@ -58,7 +58,9 @@
                                     class="object-cover w-full h-40">
                             </div>
                             <div class="mt-1 p-2">
-                                <h2 class="text-slate-700">{{ $product->name }}</h2>
+                                <h2 class="text-slate-700">{{ $product->name }}  <span class="justify-start px-2 inline-flex text-sm font-semibold rounded-full whitespace-nowrap bg-green-100 text-green-800">
+                                    {{ $product->productCategory->name }}
+                                </span></h2>
                                 <p class="mt-1 text-sm font-bold text-slate-400">Stok:
                                     @if ($product->stok <= 0)
                                         <span class="text-red-500">KOSONG</span>
