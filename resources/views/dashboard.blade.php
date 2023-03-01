@@ -88,8 +88,7 @@
                                 @if ($pesananBelumKonfirmasi == 0)
                                     <h2 class="font-semibold">Semua pesanan dikonfirmasi</h2>
                                     <p class="mt-2 text-sm text-gray-500">Belum ada pesanan masuk</p>
-                                @else
-                                    ($pesananBelumKonfirmasi > 0)
+                                @elseif ($pesananBelumKonfirmasi > 0)
                                     <h2 class="font-semibold">{{ $pesananBelumKonfirmasi }} Pesanan belum dikonfirmasi
                                     </h2>
                                     <p class="mt-2 text-sm text-gray-500">Pesanan masuk {{ $waktuPesananBaru }}</p>
