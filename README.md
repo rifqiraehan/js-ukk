@@ -6,6 +6,7 @@ Sistem Informasi Kantin Sekolah SMK Negeri 2 Surabaya dibuat untuk memberikan ke
 Brand "Canteen Co." sebagai Canteen Company bisa diartikan sebagai merek atau identitas bisnis yang terkait dengan penyediaan makanan dan minuman di kantin sekolah. Brand ini bisa mencerminkan nilai-nilai seperti kebersihan, kualitas makanan, keamanan pangan, dan layanan yang baik. Brand "Canteen Co." sebagai Canteen Collaboration menunjukkan bahwa sistem informasi kantin sekolah mendorong kerja sama antara penjual kantin, murid sekolah, dan administrator untuk mencapai tujuan yang sama, yaitu menyediakan layanan kantin yang berkualitas tinggi.
 
 ## Installation
-<blockquote>
-npm install && npm run build
-</blockquote>
+- <code> composer install </code>
+- <code> npm install && npm run build </code>
+- <code> php artisan migrate --seed</code>
+- <code> php artisan serve</code>
